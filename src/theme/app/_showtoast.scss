@@ -1,0 +1,29 @@
+ion-toast.toast-default {
+  .toast-wrapper {
+      width: initial;
+      margin: 18px;
+      border-radius: 5px;
+      // color: #155724;
+      // background-color: #d4edda;
+      // border-color: #c3e6cb;
+      text-align: center;
+      .toast-message{
+        // color: #155724;
+      }
+  }
+}
+
+ion-toast.toast-error {
+  .toast-wrapper {
+      width: initial;
+      margin: 18px;
+      border-radius: 5px;
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      text-align: center;
+      .toast-message{
+        color: #721c24;
+      }
+  }
+}

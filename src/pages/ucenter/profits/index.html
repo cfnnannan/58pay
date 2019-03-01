@@ -1,0 +1,90 @@
+<ion-header no-border>
+  <ion-toolbar no-padding>
+    <div class="app-toolbar-primary">
+      <div class="toolbar-buttons">
+        <button ion-button class="back-bar-button" navPop tappable></button>
+      </div>
+      <div class="toolbar-title" [ngStyle]="{'text-align': HeaderTitleAlign}">
+        <span>{{HeaderTitle}}</span>
+      </div>
+      <div class="toolbar-buttons">
+          <button ion-button (click)="ToggleProfits()" [ngStyle]="{'opacity':TopVue > 120 ? 1 : OpacityVue}" tappable>
+              <ion-icon [innerHTML]="OperationIcon"></ion-icon>
+            </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div [hidden]="!IsPanel">
+    <!-- <app-panel Name="余额" [Title]="TolAmount" [Opacity]="OpacityVue" BtnTxt="申请提现"></app-panel> -->
+    <app-panel Name="余额" [Title]="TolAmount" [Opacity]="OpacityVue"></app-panel>
+    <ion-grid class="bgc-grad-primary reverse" align-items-center id="bar">
+      <ion-row [ngStyle]="{'opacity':OpacityVue}">
+        <ion-col col-6 text-light>累计分润：￥{{Profits.profit/100}}</ion-col>
+        <ion-col col-6 text-right text-light>今日分润：￥{{Profits.today/100}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <div #chartPanel class="charts-panel" [style.height]="SetChartPanel" [class.show]="DomChartPanel.IsShow">
+      <ion-row class="" m-t-5 align-items-center>
+        <ion-col col-2>
+          <div text-center ion-text (click)="UpdateData(0)" [ngStyle]="{'color': Count == 5 ? 'gray' : '#3f96d9'}">
+            <ion-icon>&#xf3cf;</ion-icon>
+          </div>
+        </ion-col>
+        <ion-col class="option-height selected" col-8>
+          <span>{{ShowMonth}}收益</span>
+        </ion-col>
+        <ion-col col-2>
+          <div text-center ion-text (click)="UpdateData(1)" [ngStyle]="{'color': Count == 0 ? 'gray' : '#3f96d9'}">
+            <ion-icon>&#xf3d1;</ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div style="display: block">
+        <canvas baseChart 
+          [datasets]="chartMize.Data" 
+          [labels]="chartMize.Labels" 
+          [options]="chartMize.Options" 
+          [colors]="chartMize.Colors"
+          [legend]="chartMize.Legend" 
+          [chartType]="chartMize.Type" 
+          (chartHover)="chartMize.HandlerClicked($event)" 
+          (chartClick)="chartMize.HandlerHovered($event)">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div #profitList>
+    <ng-container *ngFor="let items of ProFitsData">
+      <ion-grid class="list-grid-default">
+        <h6 p-h-10 [ngClass]="{'close': items.close}" (click)="items.close = !items.close">
+          <span *ngIf="MonthNow == items.month; then nowBlock else agoBlock"></span>
+          <ng-template #nowBlock>当月收益</ng-template>
+          <ng-template #agoBlock>{{items.month}}收益</ng-template>
+          <span class="addback" pull-right [style.width]="items.barWidth" [ngClass]="{'close': items.close}"></span>
+          <span pull-right>{{items.total/100}}元</span>
+        </h6>
+        <div [ngClass]="{'bar-shrink': items.close}">
+          <ion-row align-items-center p-l-10 *ngFor="let item of items.data" [ngClass]="{'scale-list': items.close}">
+            <ion-col col-1 text-center class="has-icon">
+              <img src="assets/imgs/card.png">
+            </ion-col>
+            <ion-col col-11>
+              <ul class="list-row-inner">
+                <li class="title">
+                  {{item.date}}
+                  <p>信用卡收款分润</p>
+                </li>
+                <li class="note">
+                  <span ion-text color="dark">￥{{item.profit/100}}</span>
+                </li>
+              </ul>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
+    </ng-container>
+  </div>
+
+</ion-content>

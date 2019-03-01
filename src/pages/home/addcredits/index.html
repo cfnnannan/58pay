@@ -1,0 +1,62 @@
+<ion-header no-border>
+  <!-- 添加信用卡 -->
+  <ion-toolbar no-padding>
+    <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="grid-inforlist-default" m-b-10>
+        <ion-row class="border-last">
+            <ion-col col-4>持卡人</ion-col>
+            <ion-col>{{App.UserInfo.name}}</ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="grid-inforlist-default" m-b-10>
+          <ion-row class="border-last">
+              <ion-col col-4>身份证</ion-col>
+              <ion-col>{{ShowIDCard}}</ion-col>
+          </ion-row>
+        </ion-grid>
+        <form novalidate [formGroup]="Form_Group_Card">
+          <ion-grid class="grid-inforlist-default" m-b-10>
+            <ion-row>
+                <ion-col col-4>卡号</ion-col>
+                <ion-col><ion-input type='number' placeholder="请输信用卡卡号" formControlName="CardNo"></ion-input></ion-col>
+            </ion-row>
+            <ion-row class="border-last">
+              <ion-col col-4>手机号</ion-col>
+              <ion-col> <ion-input type='number' placeholder="请输银行预留手机号" formControlName="Mobile"></ion-input></ion-col>
+          </ion-row>
+          </ion-grid>
+        </form>
+        <ion-row justify-content-center m-t-15>
+          <ion-col col-11>
+            <button class="bgc-grad-primary bgc-header" ion-button round block f-1-6 [disabled]="CompleteBtnIsDisabled" (click)="AddCard()">完成</button>
+          </ion-col>
+      </ion-row>
+</ion-content>
+
+<!-- 添加银行卡错误阴影 样式在grid.scss-->
+<!-- <div *ngIf = "AddWrong">
+    <div class="shadow-bgc"></div>
+    <div class="shadow-cont shadow-contA">
+        <ion-grid>
+            <ion-row justify-content-center>
+                <ion-col col-9 text-center>
+                    <div>
+                        <p no-margin ion-text color="red">添加失败!</p>
+                        <span>{{WrongMsg}}</span>
+                    </div>
+                    <p ion-text color="orange" f-1-5>请重新输入</p>
+                </ion-col>
+            </ion-row>
+            <ion-row justify-content-center m-t-10>
+                <ion-col col-6><button class="bgc-grad-primary bgc-header" ion-button block (click)="Close()">确定</button></ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+  </div> -->
+
+
+

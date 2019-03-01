@@ -1,0 +1,141 @@
+<ion-header no-border>
+    <!-- <ion-toolbar no-padding>
+        <app-toolbar *ngIf="ActiveIndex === 0" HasBack="true" [Title]="HeadTitle" BtnIcon="&#xf273;" (BtnIconEvent)="AddCards()"></app-toolbar>
+        <app-toolbar *ngIf="ActiveIndex === 1" HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar> -->
+    <div class="register">
+        <ion-row class="bgc-grad-primary back-btn">
+            <ion-col f-1-6 p-h-15>
+                <span *ngIf="ActiveIndex === 0">
+                    <ion-icon f-2-0 float-left tappable (click)="TabsIndex()">&#xf3cf;</ion-icon>
+                    我的卡片
+                    <ion-icon f-2-0 float-right tappable (click)="AddCards()">&#xf273;</ion-icon>
+                </span>
+                <span *ngIf="ActiveIndex === 1">
+                    <ion-icon f-2-0 float-left tappable (click)="TabsIndex()">&#xf3cf;</ion-icon>
+                    我的卡片
+                </span>
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-grid class="grid-row-default" no-padding>
+        <ion-row class="justify-evenly" no-padding>
+            <ion-col text-center (click)="SwitchTabs(0)" [class.active]="ActiveIndex === 0">
+                <span>信用卡({{App.UserInfo.creditCards}}张)</span>
+            </ion-col>
+            <ion-col text-center (click)="SwitchTabs(1)" [class.active]="ActiveIndex === 1">
+                <span>储蓄卡({{App.UserInfo.depositCards}}张)</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <div [ngSwitch]="ActiveIndex">
+        <!-- 信用卡 -->
+        <div *ngSwitchCase="0">
+            <!-- 未添加 -->
+            <div padding-horizontal class="minus-margin" *ngIf="CreditCarts.length == 0">
+                <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow">
+                    <ion-row class="banks-temp">
+                        <ion-col text-center>
+                            请添加付款信用卡
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="banks-temp">
+                        <ion-col col-4 class="infc-btn" [navPush]="App.RootPage.AddcreditsPage" navParams="MycardPage">
+                            <button ion-button block >+</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <!-- 已添加 -->
+            <div padding-horizontal class="minus-margin" *ngFor="let item of CreditCarts">
+                <b class="card-del" (click)="DelCreditCards(item.id)">
+                    <img src="assets/imgs/laji.png" alt="" width="60%">
+                </b>
+                <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow" [ngStyle]="{'justify-content':'start'}">
+                    <ion-row class="banks-contA" [ngStyle]="{'padding-top':'15px'}">
+                        <ion-col col-2 text-center>
+                            <div class="face">
+                                <img src="assets/banklogo/bank_{{item.code}}.png" alt="">
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <h6 no-margin>{{item.bank}}</h6>
+                            <span class="opacity-5">付款信用卡</span>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="banks-contB">
+                        <ion-col></ion-col>
+                        <ion-col>****</ion-col>
+                        <ion-col>****</ion-col>
+                        <ion-col>****</ion-col>
+                        <ion-col>{{item.cardNo}}</ion-col>
+                    </ion-row>
+                    <div class="pic">
+                        <img src="assets/banklogo/bank_{{item.code}}_0.png" alt="">
+                    </div>
+                </ion-grid>
+            </div>
+        </div>
+
+
+        <!-- 储蓄卡 -->
+        <div *ngSwitchCase="1">
+            <!-- 未添加 -->
+            <div padding-horizontal class="minus-margin" *ngIf="DepositCards.length == 0">
+                <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow">
+                    <ion-row class="banks-temp">
+                        <ion-col text-center>
+                            请添加收款储蓄卡
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="banks-temp">
+                        <ion-col col-4 class="infc-btn" [navPush]="App.RootPage.AdddepositPage" navParams="MycardPage">
+                            <button ion-button block >+</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <!-- 已添加 -->
+            <div padding-horizontal class="minus-margin" *ngFor="let item of DepositCards">
+                <b class="card-del" (click)="DelDepositCards(item.id)">
+                    <img src="assets/imgs/laji.png" alt="" width="60%">
+                </b>
+                <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow" [ngStyle]="{'justify-content':'start'}">
+                    <ion-row class="banks-contA" [ngStyle]="{'padding-top':'15px'}">
+                        <ion-col col-2 text-center>
+                            <div class="face">
+                                <img src="assets/banklogo/bank_{{item.code}}.png" alt="">
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <h6 no-margin>{{item.bank}}</h6>
+                            <span class="opacity-5">收款储蓄卡</span>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="banks-contB">
+                        <ion-col></ion-col>
+                        <ion-col>****</ion-col>
+                        <ion-col>****</ion-col>
+                        <ion-col>****</ion-col>
+                        <ion-col>{{item.cardNo}}</ion-col>
+                    </ion-row>
+                    <ion-row class="banks-contC">
+                        <ion-col col-2 p-t-10 [navPush]="App.RootPage.AdddepositPage">
+                            <!-- <button ion-button block [navPush]="App.RootPage.ChangecardsPage" [navParams]="CardList">更换</button> -->
+                            <button ion-button block>更换</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <div class="pic">
+                    <img src="assets/banklogo/bank_{{item.code}}_0.png" alt="">
+                </div>
+            </div>
+            <div text-center f-1-7 ion-text color="light-dark">
+                <p m-b-5>温馨提示：</p>
+                <span>仅可绑定一张储蓄卡，如需变更请点击更换</span>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,133 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+    <ion-toolbar no-padding>
+        <ion-grid class="grid-row-default" no-padding>
+            <ion-row no-padding justify-content-around>
+                <ion-col col-3 text-center (click)="SwitchTabs(0)" [ngClass]="{'active':ActiveIndex == 0}">未使用<span>(</span>{{DataToUse.length}}<span>)</span></ion-col>
+                <ion-col col-3 text-center (click)="SwitchTabs(1)" [ngClass]="{'active':ActiveIndex == 1}">已使用<span>(</span>{{DataUsed.length}}<span>)</span></ion-col>
+                <ion-col col-3 text-center (click)="SwitchTabs(2)" [ngClass]="{'active':ActiveIndex == 2}">已过期<span>(</span>{{DataOutDate.length}}<span>)</span></ion-col>
+            </ion-row>
+        </ion-grid> 
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<!-- 未使用 -->
+    <div [ngSwitch]="ActiveIndex">
+        <div *ngSwitchCase="0">
+            <!-- <div padding-horizontal>
+                <ion-grid class="list-grid-default" margin-top>
+                    <ion-row align-items-center class="border-line">
+                        <ion-col col-1 text-center class="has-icon"><img src="assets/imgs/vip.png"></ion-col>
+                        <ion-col no-padding>
+                            <ul class="list-row-inner">
+                                <li class="note" text-left >您有<span ion-text color="orange"> 2 </span>张待领取的礼券</li>
+                                <li class="icon-arrow"><ion-icon ion-text f-2-5></ion-icon></li>
+                            </ul>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div> -->
+            <ion-grid class="grid-card-default" no-padding padding-horizontal margin-top>
+                <ion-row *ngFor="let item of DataToUse;">
+                    <ion-col col-4>
+                        <div class="card-value">
+                            <label>
+                                <span f-2-0>￥</span>
+                                <em f-5-0>{{item.amount/100}}</em>
+                                <br>
+                                <span>抵扣券</span>
+                            </label>
+                        </div>
+                    </ion-col>
+                    <ion-col col-8>
+                        <div class="card-description">
+                            <h6 p-l-10 m-t-5>单笔收款满<span ion-text color="orange"> {{item.matchAmt/100}} </span>元可用</h6>
+                            <!-- <img src="assets/imgs/guoqi.png"> -->
+                            <ul ion-text color="gray">
+                                <li>有效期至<span>{{item.expireDate}}</span></li>
+                                <li>{{item.source}}</li>
+                            </ul>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ng-template [ngIf]="ToUseEmpty">
+                <div text-center p-t-50 p-b-50>
+                    <img src="assets/imgs/nulldata.png" alt="" width="150px">
+                    <p text-center text-gray-light f-1-6>暂无未使用礼券</p>
+                </div>
+            </ng-template>
+        </div>
+
+<!-- 已使用 -->
+        <div *ngSwitchCase="1">
+            <ion-grid class="grid-card-default" no-padding padding-horizontal margin-top>
+                <ion-row *ngFor = "let item of DataUsed">
+                    <ion-col col-4 class="opacity-3">
+                        <div class="card-value">
+                        <label>
+                            <span f-2-0>￥</span>
+                            <em f-5-0>{{item.amount/100}}</em>
+                            <br>
+                            <span>抵扣券</span>
+                        </label>
+                        </div>
+                    </ion-col>
+                    <ion-col col-8 ion-text color="light-dark">
+                        <div class="card-description">
+                            <h6 p-l-10 m-t-5>单笔收款满<span ion-text color="orange"> {{item.matchAmt/100}} </span>元可用</h6>
+                            <img class="img-overdue" src="assets/imgs/yishi.png">
+                            <ul>
+                                <li>有效期至<span>{{item.expireDate}}</span></li>
+                                <li> {{item.source}} </li>
+                            </ul>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ng-template [ngIf]="UsedEmpty">
+                <div text-center p-t-50 p-b-50>
+                    <img src="assets/imgs/nulldata.png" alt="" width="150px">
+                    <p text-center text-gray-light f-1-6>暂无已使用礼券</p>
+                </div>
+            </ng-template>
+        </div>
+
+
+<!-- 已过期 -->
+        <div *ngSwitchCase="2">
+            <ion-grid class="grid-card-default" no-padding padding-horizontal  margin-top ion-text color="light-dark">
+                <ion-row *ngFor = "let item of DataOutDate;">
+                    <ion-col col-4>
+                        <div class="card-value card-overdue">
+                            <label>
+                                <span f-2-0>￥</span>
+                                <em f-5-0>{{item.amount/100}}</em>
+                                <br>
+                                <span>抵扣券</span>
+                            </label>
+                        </div>
+                    </ion-col>
+                    <ion-col col-8>
+                        <div class="card-description">
+                            <h6 p-l-10 m-t-5>单笔收款满<span ion-text color="orange"> {{item.matchAmt/100}} </span>元可用</h6>
+                            <ul>
+                                <li>有效期至2017-12-12 00:00:00</li>
+                                <li> {{item.source}} </li>
+                            </ul>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ng-template [ngIf]="OutDateEmpty">
+                <div text-center p-t-50 p-b-50>
+                    <img src="assets/imgs/nulldata.png" alt="" width="150px">
+                    <p text-center text-gray-light f-1-6>暂无已过期礼券</p>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</ion-content>

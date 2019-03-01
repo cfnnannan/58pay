@@ -1,0 +1,45 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ng-template [ngIf]="!DataEmpty">
+        <ion-grid class="bgc-light" no-padding>
+            <div *ngFor="let items of ListData">
+                <h5 p-h-10 p-v-5 [ngStyle]="{'background':'aliceblue','margin':'0'}">
+                    {{items.month}}成功收款
+                    <span float-right>{{items.total/100}}元</span>
+                </h5>
+                <div *ngFor="let item of items.data">
+                    <ion-row align-items-center p-h-5 [navPush]="App.RootPage.OrdersPage" [navParams]="item.id">
+                        <ion-col col-1 text-center>
+                            <img src="assets/imgs/vip.png">
+                        </ion-col>
+                        <ion-col col-5 [ngSwitch]="item.type">
+                            <span *ngSwitchCase="'card'">信用卡收款</span>
+                            <span *ngSwitchCase="'alipay'">支付宝收款</span>
+                            <span *ngSwitchCase="'wechat'">微信收款</span>
+                            <p no-margin ion-text color="light-dark">{{item.time}}</p>
+                        </ion-col>
+                        <ion-col col-3 [ngSwitch]="item.status">
+                            <img *ngSwitchCase="'0'" src="assets/imgs/seal-3.png" style="max-width:none;width:60px;height:60px;">
+                            <img *ngSwitchCase="'1'" src="assets/imgs/seal-1.png" style="max-width:none;width:60px;height:60px;">
+                            <img *ngSwitchCase="'2'" src="assets/imgs/seal-2.png" style="max-width:none;width:60px;height:60px;">
+                        </ion-col>
+                        <ion-col col-3 text-nowrap>
+                            <span f-1-0>￥</span>{{item.amount/100}}
+                            <ion-icon [ngStyle]="{'float':'right','color':'#ccc'}">&#xf3d1;</ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </ion-grid>
+    </ng-template>
+    <ng-template [ngIf]="DataEmpty">
+        <div text-center p-t-50 p-b-50>
+            <img src="assets/imgs/nulldata.png" alt="" width="150px">
+            <p text-center text-gray-light f-1-6>你还没有收款记录哦</p>
+        </div>
+    </ng-template>
+</ion-content>

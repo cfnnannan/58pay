@@ -1,0 +1,30 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle" ></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="register">
+        <div>
+            <ion-grid text-center>
+                <form novalidate [formGroup]="Form_Group" autocomplete="off">
+                    <ion-row class="reg-line">
+                        <ion-col col-12>
+                            <input type="password" placeholder="请输入密码" formControlName="pwd" required>
+                        </ion-col>
+                    </ion-row>
+                </form>
+                <ion-row class="reg-line">
+                    <ion-col col-12>
+                        <input type="password" placeholder="请确认密码" [(ngModel)]="conpwd" >
+                    </ion-col>
+                </ion-row>
+                <ion-row m-t-30>
+                    <ion-col col-12>
+                        <button class="bgc-grad-primary bgc-header" (click)="clickgetlogin()" [ngClass]="{'disabled': pwd.invalid}" [disabled]="pwd.invalid">完成</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>

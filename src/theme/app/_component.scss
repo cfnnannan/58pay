@@ -1,0 +1,49 @@
+.swiper-topic {
+    height: 25vh;
+    background-color: white;
+}
+
+.cmp-panel {
+    min-height: 100px;
+    color: white;
+    .name {
+        opacity: .5;
+        font-size: 1.5rem;
+    }
+    .title {
+        font-size: 3.0rem;
+    }
+}
+
+
+.face-default {
+  &:before {
+    font-size: 6rem;
+    font-family: 'appicon';
+    content: "\e908";
+  }
+}
+
+.face-sm-default {
+  &:before {
+    font-size: 4rem;
+    font-family: 'appicon';
+    content: "\e908";
+  }
+}
+
+.face-female {
+  &:before {
+    font-size: 6rem;
+    font-family: 'appicon';
+    content: "\e909";
+  }
+}
+
+.face-sm-female {
+  &:before {
+    font-size: 4rem;
+    font-family: 'appicon';
+    content: "\e909";
+  }
+}

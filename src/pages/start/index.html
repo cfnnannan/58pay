@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="start-app">
+    <div class="wall" text-center>
+        <ion-row>
+            <ion-col><b>有资金需求，自己搞定</b></ion-col>
+        </ion-row>
+        <ion-row m-v-35>
+            <ion-col><img src="assets/imgs/start.png" alt="" width="70%"></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><p>信用卡可提现   超低手续费</p><p>资金秒到账   安全有保障</p></ion-col>
+        </ion-row>
+    </div>
+    <ion-row class="action-btn" justify-content-center>
+          <ion-col col-5>
+                <button ion-button full  [navPush]="App.RootPage.RegisterPage">注册</button>
+          </ion-col>
+          <ion-col col-5>
+              <button class="active" ion-button full [navPush]="App.RootPage.LoginPage">登录</button>
+        </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

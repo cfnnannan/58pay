@@ -1,0 +1,88 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <app-panel [Title]="ClientsNum" Name="数量"></app-panel>
+    <div *ngIf="DataClientOne.length != 0; then hasClient else noClient"></div>
+<!-- 有客户的页面 -->
+    <ng-template #hasClient>
+        <ion-row class="range-option" m-v-10>
+            <ion-col class="option-height option-height-c" col-6 [class.selected]="TabActive === 0"  (click)="SwitchTab(0)" tappable>
+                <div>
+                    <span f-1-5>直接客户</span>
+                    <strong f-1-8>{{DataClientOne.length}}</strong>
+                    <span f-1-2>个</span>
+                </div>
+            </ion-col>
+            <ion-col class="option-height option-height-c" col-6 [class.selected]="TabActive === 1"  (click)="SwitchTab(1)" tappable>
+                <div>
+                    <span f-1-5>间接客户</span>
+                    <strong f-1-8>{{DataClientTwoLen}}</strong>
+                    <span f-1-2>个</span>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <div [ngSwitch]="TabActive">
+            <!-- 直接客户 -->
+            <div *ngSwitchCase="0">
+                <ion-grid class="list-grid-default">
+                    <ion-row *ngFor = "let item of DataClientOne" align-items-center p-l-10 (click)="ShowTabTwo(item.id)">
+                        <ion-col col-1 text-center class="has-icon"><img src="assets/imgs/yiji.png"></ion-col>
+                        <ion-col col-11>
+                            <ul class="list-row-inner">
+                                <li class="title"><span>ID:{{item.id}}</span><p>{{item.date}}</p></li>
+                                <li class="title" text-right><span>￥{{item.profit/100}}</span><p>收益贡献</p></li>
+                                <li class="icon-arrow" text-right><ion-icon></ion-icon></li>
+                            </ul>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <!-- 间接客户 -->
+            <div *ngSwitchCase="1">
+                <ion-grid *ngFor = "let items of DataClientShow" class="list-grid-default">
+                    <h6 p-l-20 p-r-15>
+                        ID:{{items.sid}}
+                        <span float-right>{{items.data.length}}个间接客户</span>
+                    </h6>
+                    <ion-row align-items-center p-l-10 *ngFor="let item of items.data">
+                        <ion-col col-1 text-center class="has-icon"><img src="assets/imgs/yiji.png"></ion-col>
+                        <ion-col col-11>
+                            <ul class="list-row-inner">
+                                <li class="title"><span>ID:{{item.id}}</span><p>{{item.date}}</p></li>
+                                <li class="title" text-right><span>￥{{item.profit/100}}</span><p>收益贡献</p></li>
+                            </ul>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </ng-template>
+
+<!-- 没有客户的页面 -->
+    <ng-template #noClient>
+        <ion-row class="range-option bgc-grad-light">
+            <ion-col class="option-height option-height-d" col-6 tappable>
+                <div ion-text color="light">
+                    <span f-1-5>直接客户</span>
+                    <strong f-1-8>0</strong>
+                    <span f-1-2>个</span>
+                </div>
+            </ion-col>
+            <ion-col class="option-height option-height-d" col-6  tappable>
+                <div ion-text color="light">
+                    <span f-1-5>间接客户</span>
+                    <strong f-1-8>0</strong>
+                    <span f-1-2>个</span>
+                </div>
+            </ion-col>
+        </ion-row>
+        <div text-center p-t-50>
+            <img src="assets/imgs/mykh.png" alt="" width="50%" height="100%">
+            <h5 f-1-8 ion-text color="light-dark">还没有客户哦~ 快去发展吧</h5>
+        </div>
+    </ng-template>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="bgc-light">
+    <ion-row justify-content-center>
+      <ion-col col-3 text-center p-t-30>
+        <img src="assets/imgs/58icon.png">
+        <p no-margin p-t-10>v1.0.0</p>
+      </ion-col>
+    </ion-row>
+    <div padding-horizontal m-b-20>
+      <h5 text-center m-t-10>关于我们</h5>
+      <ng-template [ngIf]="App.CanTrade || App.IsIos">
+        <span text-left ion-text color="dark">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 58付是一种基于信用卡的收款（收单）方式，应用于个人之间的资金往来，以及小微商户的收款（收单）场景。 公司专注用户体验、网络安全与个人隐私保护以及服务质量，打造精品，服务客户。
+        </span>
+      </ng-template>
+    </div>
+  </ion-grid>
+
+
+
+  <ion-grid class="list-grid-default" m-t-10>
+    <ion-row p-l-10 [navPush]="App.RootPage.ModifypwdPage">
+      <ion-col>
+        <ul class="list-row-inner">
+          <li class="title">登录密码</li>
+          <li class="icon-arrow">
+            <ion-icon></ion-icon>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-grid class="list-grid-default" m-t-10> -->
+    <!-- <ion-row p-l-10>
+      <ion-col>
+          <ul class="list-row-inner">
+            <li class="title">关于我们</li>
+            <li class="icon-arrow"><ion-icon></ion-icon></li>
+          </ul>
+      </ion-col>
+    </ion-row> -->
+    <!-- <ion-row p-l-10>
+      <ion-col>
+        <ul class="list-row-inner">
+          <li class="title">用户反馈</li>
+          <li class="icon-arrow">
+            <ion-icon></ion-icon>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row> -->
+  <!-- </ion-grid> -->
+  <ion-row justify-content-center margin-vertical>
+    <ion-col col-5>
+      <button class="bgc-grad-primary" ion-button block (click)="Logout()">退出账号</button>
+    </ion-col>
+  </ion-row>
+  <ion-row text-center>
+    <ion-col ion-text color="light-dark" f-1-6>
+      <p no-margin>Copyright ©2016-2018</p>
+      <span>深圳前海微融科技有限公司</span>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid margin-top>
+        <!-- 待输入 -->
+        <form novalidate [formGroup]="Form_Group">
+            <ion-row justify-content-center align-items-center>
+                <ion-col text-center col-3>
+                    <img src="assets/imgs/my1.png" alt="" *ngIf="BtnIsDisabled">
+                    <img src="assets/imgs/my3.png" alt="" *ngIf="!BtnIsDisabled">
+                </ion-col>
+                <ion-col col-8 text-left m-b-5>
+                    <ion-input class="auth-ipt" placeholder="请输入持卡人姓名" formControlName="Name" type="text"></ion-input>
+                    <ion-input class="auth-ipt" placeholder="请输入持卡人身份证号" formControlName="IdNo" type="text"></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row justify-content-center m-b-15 m-t-30>
+                <ion-col col-10>
+                    <button ion-button round block class="bgc-grad-primary" [disabled]="BtnIsDisabled" (click)="Submit()">认证</button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>

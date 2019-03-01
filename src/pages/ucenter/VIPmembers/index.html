@@ -1,0 +1,125 @@
+<ion-header no-border class="bgc-gray-light">
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+        <!-- <div class="vip-toolbar bgc-grad-primary"></div> -->
+    </ion-toolbar>
+    <ion-toolbar no-padding>
+        <ion-grid class="grid-mine-header bgc-grad-primary no-padding">
+            <ion-row justify-content-center>
+                <ion-col col-5 text-center *ngIf="App.IsVip">
+                    <img class="vipface" src="assets/imgs/hgvip.png">
+                    <span text-nowrap p-b-5>会员{{Deadline}}到期</span>
+                </ion-col>
+                <ion-col col-5 text-center *ngIf="!App.IsVip">
+                    <img class="vipface" src="assets/imgs/hgvip.png">
+                    <span text-nowrap p-b-5>你还不是VIP会员</span>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div m-h-15 m-v-15>
+        <ion-grid class="vip-list" no-padding 
+        [ngClass]="{'active': VipIndex == i && item.name != App.UserInfo.rank}"
+        [ngClass]="{'no-active': item.name != App.UserInfo.rank}"
+        (click)="ChooseVIP(i)" *ngFor="let item of VipList; let i = index">
+            <ion-row class="vip-item">
+                <ion-col col-9 text-left>
+                    <h4>{{item.name}}</h4>
+                    <div m-b-10>
+                        <p>无积分{{item.rate}}%，有积分{{item.rate1}}%</p>
+                        <p>直推返利：{{item.profitRate1}}%，间推返利：{{item.profitRate2}}%</p>
+                        <!-- <p>间推返利：{{item.profitRate2}}%</p> -->
+                        <p>有效期
+                            <span *ngIf="item.days == '-1'; then Infinit; else Days"></span>
+                            <ng-template #Infinit>永久有效</ng-template>
+                            <ng-template #Days>{{item.days}}天</ng-template>
+                        </p>
+                    </div>
+                </ion-col>
+                <ion-col col-3 text-right>
+                    <b>￥{{item.price}}</b>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid class="vip-list pay list-grid-default" p-v-20 m-t-10>
+            <ion-row p-h-10>
+                <ion-col>
+                    <ul class="list-row-inner">
+                        <li class="note" text-left>
+                            <span class="bank-face"><img src="assets/imgs/zfb.png"></span>
+                            <span ion-text color="dark">支付宝支付</span>
+                        </li>
+                        <li class="title" text-right><i class="has-point active"></i></li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <!-- <div [ngStyle]="{width: '100%', height: '8%', 'margin-top': '2%'}"></div>
+    <div p-h-15>
+        <ion-grid class="grid-vip-cont grid-header-bar" p-v-20>
+            <div class="foor-face"><img src="assets/imgs/yyy.png" alt=""></div>
+            <ion-row class="face-cont face-cont-vip"
+                [ngClass]="{'active': VipIndex == i && item.name != App.UserInfo.rank}"
+                [ngClass]="{'no-active': item.name != App.UserInfo.rank}"
+                (click)="ChooseVIP(i)" *ngFor="let item of VipList; let i = index">
+                <ion-col>
+                    <b class="face-tab" [ngClass]="{'face-active': VipIndex == i}">
+                        <img class="face-nav" src="assets/imgs/zs{{item.id}}.png">
+                    </b>
+                </ion-col>
+                <ion-col col-2>
+                    <h5>{{item.Tname}}</h5>
+                    <h5>会员</h5>
+                </ion-col>
+                <ion-col col-2 class="border">
+                    <h6>费率</h6>
+                    <b>{{item.rate}}%</b>
+                </ion-col>
+                <ion-col col-2>
+                    <h6>有效期</h6>
+                    <b *ngIf="item.days == '-1'; then Infinit; else Days"></b>
+                    <ng-template #Infinit>永久有效</ng-template>
+                    <ng-template #Days>{{item.days}}天</ng-template>
+                </ion-col>
+                <ion-col col-3 ion-text color="red-dark">
+                    ￥<b f-2-5>{{item.price}}</b>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid class="grid-vip-cont list-grid-default" p-v-20 m-t-10>
+            <span>选择支付方式</span>
+            <ion-row>
+                <ion-col text-center>收款方式</ion-col>
+                <ion-col>
+                    <ul class="list-row-inner">
+                        <li class="note" text-left>
+                            <span class="bank-face"><img src="assets/imgs/zfb.png"></span>
+                            <span ion-text color="dark">支付宝支付</span>
+                        </li>
+                        <li class="title" text-right><i class="has-point active"></i></li>
+                    </ul>
+                </ion-col>
+                <ion-col>
+                    <ul class="list-row-inner">
+                        <li class="title" text-right><i class="has-point"></i></li>
+                        <li class="note" text-left>
+                            <span class="bank-face"><img src="assets/imgs/wx.png"></span>
+                            <span ion-text color="dark" >微信</span>
+                        </li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div> -->
+
+</ion-content>
+<ion-footer class="bgc-gray-light">
+    <ion-row justify-content-center m-h-10>
+        <ion-col>
+            <button ion-button block round class="bgc-grad-primary" (click)="Submit()">应付金额{{PayAmount}}元，去提交</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

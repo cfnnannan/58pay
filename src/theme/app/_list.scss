@@ -1,0 +1,184 @@
+//列表默认
+ion-grid {
+    &.list-grid-default {
+        padding: 0;
+        background-color: $white;
+        &.no-border>ion-row>ion-col {
+            border-bottom-width: 0;
+        }
+        .bar-shrink {
+            overflow: hidden;
+            transition: all .1s ease;
+            transform-origin: left top;
+            transform: scale(1, 1);
+            height: 18px;
+            border: 9px solid transparent;
+            border-image: url(../assets/imgs/border.png) 9 9 stretch;
+        }
+        h2 {
+            margin: 0;
+            padding: 8px 0 8px 8px;
+            background-color: color($colors, light, base); // font-size: 1.4rem;
+            position: relative;
+            span {
+                white-space: nowrap;
+                position: absolute;
+                text-align: right;
+                padding: 8px 10px;
+                right: 0;
+                height: 100%;
+                top: 0;
+                &.close {
+                    background-color: lighten(color($colors, primary), 20%);
+                }
+            }
+            &.close {
+                background-color: color($colors, primary);
+                color: #fff;
+            }
+        }
+        ion-row {
+            &:last-child ion-col {
+                border-bottom-color: transparent;
+            }
+            ion-col {
+                padding: 0 5px;
+                border-bottom: $border-light-default;
+                &.has-icon {
+                    display: flex;
+                    align-items: center;
+                    border-bottom-color: transparent;
+                    font-size: 1.6rem;
+                    color: #1d83d2;
+                }
+                img {
+                    margin: auto;
+                    max-width: 18px;
+                    &.img-face {
+                        max-width: none;
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+        ion-col input {
+            border-bottom: 1px solid $gray-200;
+            padding: 8px 5px;
+            margin: 0;
+        }
+        &.grid-default {
+            ion-col {
+                border-bottom: 0;
+            }
+        }
+        p.bank-tip {
+            //收款金额
+            padding-left: 15px; // font-size: 1.45rem;
+            margin: 10px 0;
+            color: $gray;
+        }
+    }
+}
+
+ul.list-row-inner {
+    margin: 0;
+    padding: 0 5px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 3.6rem; // font-size: 1.45rem;
+    &.n-p-v li {
+        padding: 0 5px;
+    }
+    li {
+        &:nth-child(1) {
+            padding: 5px 5px 5px 0;
+        }
+        list-style: none;
+        padding: 5px;
+        flex-grow: 1;
+        &.infor {
+            color: $gray !important;
+        }
+        &.title {
+            color: $gray-darker;
+            p {
+                margin: 2px 0 0;
+                color: lighten($gray-base, 80%);
+                font-size: 1.35rem;
+            }
+            &.slash {
+                transform: rotate(210deg);
+                -o-transform: rotate(210deg);
+                -moz-transform: rotate(210deg);
+                -webkit-transform: rotate(220deg);
+                span {
+                    font-size: 3.7rem;
+                    border: 0.05rem solid $gray-300;
+                    padding: 0;
+                }
+            }
+            i.has-point {
+                border: 1px solid $gray-500;
+                border-radius: 50%;
+                width: 10%;
+                padding: 7px;
+                display: inline-block;
+                background-color: #fff;
+                &.active {
+                    border: 0;
+                    border: 3px solid $primary;
+                    background-color: #bad9f1;
+                    padding: 3px;
+                }
+            }
+        }
+        &.note {
+            // font-size: 1.45rem;
+            text-align: right;
+            .bank-face {
+                vertical-align: sub;
+                img {
+                    border-radius: 50%;
+                }
+            }
+            ion-input input {
+                border-bottom: none;
+            }
+        }
+        &.icon-arrow {
+            color: lighten($gray-light, 35%);
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            ion-icon {
+                // font-size: 2.5rem;
+                &:before {
+                    content: "\f3d1";
+                }
+            }
+        }
+    }
+}
+
+//选择开户银行列表
+ion-list {
+    &.bankcard-list {
+        &.list-ios>.item-block:last-child {
+            border-bottom: 0;
+        }
+        &.list-md>.item-block:last-child {
+            border-bottom: 0;
+        }
+        &.list-ios .item-block .item-inner {
+            padding: 10px 0;
+            border-bottom-color: $gray-300;
+        }
+        &.list-md .item-block .item-inner {
+            padding: 10px 0;
+            border-bottom-color: $gray-300;
+        }
+    }
+}

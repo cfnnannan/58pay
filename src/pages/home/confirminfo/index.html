@@ -1,0 +1,54 @@
+<ion-header no-border>
+    <!-- <ion-toolbar no-padding>
+        <app-toolbar HasBack="true"></app-toolbar>
+    </ion-toolbar> -->
+    <ion-toolbar no-padding>
+        <ion-row class="bgc-grad-primary grid-confirm-card">
+            <ion-col text-center>
+            <p><ion-icon f-5-0>&#xf2bc;</ion-icon><span f-3-0>收款成功</span></p>
+                
+              <!-- <img class="hook-face bgc-grad-primary bgc-top" src="assets/imgs/duigou.png"> -->
+              <div><span f-1-5>￥</span><span f-5-0>{{Amount}}</span></div>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="list-grid-default" m-b-10>
+        <ion-row align-items-center p-l-10>
+            <ion-col p-t-8 p-b-8>
+                <ul class="list-row-inner">
+                    <li class="title infor">收款储蓄卡</li>
+                    <li class="note">
+                        <span class="bank-face"><img src="assets/banklogo/bank_{{CardCode}}.png"></span>
+                        <span ion-text color="dark">{{CardInfo}}</span>
+                    </li>
+                </ul>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="list-grid-default" m-b-10>
+        <ion-row align-items-center p-l-10>
+            <ion-col p-t-8 p-b-8>
+                <ul class="list-row-inner">
+                    <li class="title infor">订单状态</li>
+                    <li class="note" *ngIf="Status; then Done; else Failed">
+                        <span ion-text color="orange">交易成功</span>
+                    </li>
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row align-items-center p-l-10>
+            <ion-col p-t-8 p-b-8>
+                <ul class="list-row-inner">
+                    <li class="title infor">预计到账时间</li>
+                    <li class="note"><span ion-text color="dark" >实时到账</span></li>
+                </ul>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-row text-right p-r-10 ion-text color="gray"><ion-col>*如未实时到账，一般最晚第二个工作日可到账</ion-col></ion-row>
+    <ion-row justify-content-center m-t-50  [navPush]="App.RootPage.TabsPage">
+        <ion-col col-11><button class="bgc-grad-primary bgc-header" round ion-button block  f-1-6>完 成</button></ion-col>
+    </ion-row>
+</ion-content>

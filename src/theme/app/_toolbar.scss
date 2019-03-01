@@ -1,0 +1,137 @@
+.app-toolbar-primary {
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include gradient-x(lighten(color($colors, primary), 24%), color($colors, primary));
+    &.cover-color {
+        background: color($colors, primary, base);
+    }
+    &.flex-end {
+        justify-content: flex-end;
+    }
+    >div{
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    .toolbar-title {
+
+        flex:0 0 70%;
+        font-size: 1.6rem;
+        z-index: 0;
+        width: 100%;
+        text-align: center;
+        color: $white;
+        font-weight: 700;
+    }
+    button {
+        height: auto;
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0 15px;
+        font-size: 1.5rem;
+        color: $white;
+        box-shadow: none;
+        ion-icon {
+            font-size: 2.0rem;
+        }
+        &.activated {
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+    .back-bar-button {
+        font-family: "Ionicons";
+        font-size: 2.0rem;
+        &:before {
+            content: "\f3cf";
+        }
+    }
+    .toolbar-buttons {
+        z-index: 1;
+        flex: 0 0 15%;
+    }
+}
+
+ion-header.header {
+    ion-navbar.toolbar,
+    ion-toolbar.toolbar {
+        min-height: 45px;
+        padding: 0;
+        &[flex-end] {
+            justify-content: flex-end
+        }
+        &.app-navbar-primary {
+            button {
+                z-index: 1;
+            }
+            button.back-button.show-back-button {
+                margin: 0 6px;
+                color: $white;
+                ion-icon {
+                    font-size: 2.0rem;
+                    &:before {
+                        content: "\f3cf";
+                    }
+                }
+            }
+            .toolbar-content {
+                z-index: 0;
+                position: absolute;
+                width: 100%;
+            }
+            .toolbar-background {
+                @include gradient-x(lighten(color($colors, primary), 24%), color($colors, primary));
+            }
+            .toolbar-title {
+                text-align: center;
+                font-size: 1.6rem;
+                color: $white;
+            }
+        }
+    }
+}
+
+.toolbar-title-light {
+    @extend .animate;
+    color: $white;
+    font-weight: 600;
+}
+
+//vip bar
+.vip-toolbar {
+    width: 100%;
+    height: 8vh;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+//支行搜索
+ion-toolbar {
+    &.search-bar {
+        .toolbar-background {
+            @include gradient-x(lighten(color($colors, primary), 24%), color($colors, primary));
+            border-color: transparent;
+        }
+        .toolbar-content {
+            margin-bottom: 15px;
+        }
+        .searchbar-input-container {
+            .searchbar-input {
+                background-color: #fff;
+            }
+        }
+        .searchbar {
+            padding: 0 20px;
+            .searchbar-search-icon {
+                left: 9px;
+                top: 10px;
+                background-size: 16px;
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+}

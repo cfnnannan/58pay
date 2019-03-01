@@ -1,0 +1,40 @@
+<ion-content>
+    <div class="register">
+        <ion-row class="bgc-grad-primary back-btn">
+            <ion-col col-12 f-1-6>
+                <span>登 录
+                    <ion-icon f-2-0 p-r-15 [navPush]="App.RootPage.StartPage" float-right tappable>&#xf2c0;</ion-icon>
+                </span>
+            </ion-col>
+        </ion-row>
+        <ion-row justify-content-center>
+            <ion-col class="col" col-3 p-v-40 text-center>
+                <img src="assets/imgs/58icon.png">
+            </ion-col>
+        </ion-row>
+        <div>
+            <ion-grid text-center>
+                <form novalidate [formGroup]="Form_Group" autocomplete="off">
+                    <ion-row class="reg-line">
+                        <ion-col col-12>
+                            <input type="Tel" placeholder="请输入手机号" formControlName="Tel" required>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="reg-line">
+                        <ion-col col-12>
+                            <input type="password" placeholder="请输入密码" formControlName="Pass" required>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row m-t-30>
+                        <ion-col col-12>
+                            <button class="bgc-grad-primary bgc-header" (click)="Login()" [disabled]="LoginDisabled">登录</button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+                <span ion-text color="primary" [navPush]="App.RootPage.FindpwdPage">忘记密码 ?</span>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>
+

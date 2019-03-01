@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="grid-inforlist-default" m-b-10>
+        <ion-row>
+            <ion-col col-3>持卡人</ion-col>
+            <ion-col col-8>{{App.UserInfo.name}}</ion-col>
+        </ion-row>
+        <ion-row class="border-last">
+            <ion-col col-3>身份证</ion-col>
+            <ion-col col-8>{{ShowId}}</ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <form novalidate [formGroup]="Form_Group">
+        <ion-grid class="grid-inforlist-default" m-b-10>
+            <ion-row>
+                <ion-col col-3>卡号</ion-col>
+                <ion-col col-8><ion-input type='number' placeholder="请输入储蓄卡卡号" formControlName="CardNo"></ion-input></ion-col>
+            </ion-row>
+
+            <ion-row (click)='ClickOpenBank()'>
+                <ion-col col-3>银行</ion-col>
+                <ion-col col-8>
+                    <span class="bank-face" *ngIf="BankCode"><img src="assets/banklogo/bank_{{BankCode}}.png"></span>
+                    <span>{{BankName}}</span>
+                </ion-col>
+                <ion-col text-right><ion-icon>&#xf3d1;</ion-icon></ion-col>
+            </ion-row>
+            <ion-row class="border-last" (click)='ClickBranchBank()'>
+                <ion-col col-3>支行</ion-col>
+                <ion-col col-8>
+                    <span class="bank-face" *ngIf="BranchCode"><img src="assets/banklogo/bank_{{BranchCode}}.png"></span>
+                    <span>{{BranchName}}</span>
+                </ion-col>
+                <ion-col text-right><ion-icon>&#xf3d1;</ion-icon></ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+        <ion-grid class="grid-inforlist-default" m-b-10>
+            <ion-row class="border-last">
+                <ion-col col-3>手机号</ion-col>
+                <ion-col col-8><ion-input type='Tel' placeholder="请输入银行预留手机号" formControlName="Mobile"></ion-input></ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-row justify-content-center m-t-30>
+            <ion-col col-11>
+                <button class="bgc-grad-primary bgc-header" ion-button round block f-1-6 tappable [disabled]="CompleteBtnIsDisabled" (click)="Finish()">完成</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

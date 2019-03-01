@@ -1,0 +1,18 @@
+<ion-header no-border>
+    <ion-navbar class="app-navbar-primary">
+      <ion-title>{{browser.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+        <div class="progress" [hidden]="browser.isLoaded">
+        <div class="progress-inner" id="progress"></div>
+        </div>
+
+        <iframe id="iframe" class="iframe"
+                sandbox="allow-scripts allow-top-navigation allow-pointer-lock allow-same-origin allow-popups allow-forms"
+                [src]="browser.secUrl"
+                (load)="loaded()">
+        </iframe>
+</ion-content>
+

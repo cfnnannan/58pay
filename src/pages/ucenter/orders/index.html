@@ -1,0 +1,79 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="list-grid-default" m-b-10>
+        <ion-row padding-vertical>
+            <ion-col>
+                <ul class="list-row-inner">
+                    <li class="title" text-center>
+                        <div f-2-5 style="color:orange;font-weight:700;" [ngStyle]="{ 'color': OrderDetail.status == 1 ? 'orange' : 'red'}"><span f-1-2>￥</span>{{OrderDetail.amount/100}}</div>
+                        <p class="text-gray-600">收款金额</p>
+                    </li>
+                    <!-- <li class="title slash" text-center><span></span></li> -->
+                    <li class="title" text-center>
+                        <div f-2-5 style="color:orange;font-weight:700;" [ngStyle]="{ 'color': OrderDetail.status == 1 ? 'orange' : 'red'}"><span f-1-2>￥</span>{{OrderDetail.enterAmount/100}}</div>
+                        <p class="text-gray-600">到账金额</p>
+                    </li>
+                </ul>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="list-grid-default no-border">
+        <ion-row>
+            <ion-col>
+                <ul class="list-row-inner">
+                    <li class="title" text-left><span class="text-gray-600">订单编号：</span></li>
+                    <li class="title" text-right>{{OrderDetail.orderNo}}</li>
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ul class="list-row-inner" [ngSwitch]="OrderDetail.status">
+                    <li class="title" text-left><span class="text-gray-600">订单状态：</span></li>
+                    <li class="title" text-right *ngSwitchCase="'1'"><span ion-text color="orange">成功</span></li>
+                    <li class="title" text-right *ngSwitchCase="'0'"><span ion-text color="danger">失败</span></li>
+                    <li class="title" text-right *ngSwitchCase="'2'"><span ion-text color="primary">处理中</span></li>
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ul class="list-row-inner"  [ngSwitch]="OrderDetail.type">
+                    <li class="title" text-left><span class="text-gray-600">收款方式：</span></li>
+                    <li class="title" text-right *ngSwitchCase="'card'">信用卡收款</li>
+                    <li class="title" text-right *ngSwitchCase="'alipay'">支付宝收款</li>
+                    <li class="title" text-right *ngSwitchCase="'wechat'">微信收款</li>
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ul class="list-row-inner">
+                    <li class="title" text-left><span class="text-gray-600">收款信用卡：</span></li>
+                    <li class="title" text-right>{{OrderDetail.payCard}}</li>
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ul class="list-row-inner">
+                    <li class="title" text-left><span class="text-gray-600">到账储蓄卡：</span></li>
+                    <li class="title" text-right>{{OrderDetail.outCard}}</li>
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ul class="list-row-inner">
+                    <li class="title" text-left><span class="text-gray-600">收款时间：</span></li>
+                    <li class="title" text-right>{{OrderDetail.time}}</li>
+                </ul>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

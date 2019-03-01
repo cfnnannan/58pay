@@ -1,0 +1,33 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="register">
+        <div>
+            <ion-grid text-center>
+                <form novalidate [formGroup]="Form_Group" autocomplete="off">
+                    <ion-row class="reg-line">
+                        <ion-col col-12>
+                            <input type="number" placeholder="请输入手机号码" formControlName="tel" required>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="reg-line">
+                        <ion-col col-7>
+                            <input type="text" placeholder="请输入验证码" formControlName="VCode" required>
+                        </ion-col>
+                        <ion-col col-5>
+                            <button class="smbtn" (click)="GetCode()" [ngClass]="{'disabled': tel.invalid}" [disabled]="tel.invalid">{{VCodeText}}</button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+                <ion-row m-t-30>
+                    <ion-col col-12>
+                        <button class="bgc-grad-primary bgc-header" [disabled]="FindDisabled" (click)=" GetTelCode()">下一步</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>

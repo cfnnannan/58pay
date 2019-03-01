@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+    <ion-toolbar class="search-bar">
+        <ion-searchbar (ngModelChange)="GetKey()" placeholder="请输关键字搜索,如'福田'" [(ngModel)]="KeyWord"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list class="bankcard-list">
+        <ion-item *ngFor="let item of BranchList" (click)="SelectedBranch(item)">
+            <ion-avatar item-start>
+                <img src="assets/banklogo/bank_{{BankCode}}.png">
+            </ion-avatar>
+            <h2>{{item.bankName}}</h2>
+        </ion-item>
+    </ion-list>
+</ion-content>

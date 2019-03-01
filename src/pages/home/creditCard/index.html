@@ -1,0 +1,169 @@
+<ion-header no-border>
+    <!-- <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar> -->
+    <div class=" register">
+        <ion-row class="bgc-grad-primary back-btn">
+            <ion-col f-1-6 p-h-15>
+                <span>
+                    <ion-icon f-2-0 float-left tappable [navPush]="App.RootPage.TabsPage">&#xf3cf;</ion-icon>
+                    刷卡提现
+                </span>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-header>
+<ion-content>
+    <div *ngIf="App.CurrentCreditCards.primary === '1'; then HasCredit; else NullCredit"></div>
+    <!-- 已添加信用卡 -->
+    <ng-template #HasCredit>
+        <div padding-horizontal m-t-10>
+            <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow">
+                <ion-row class="banks-contA">
+                    <ion-col col-2 text-center>
+                        <div class="face">
+                            <img src="assets/banklogo/bank_{{App.CurrentCreditCards.code}}.png" alt="">
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <h6 no-margin>{{App.CurrentCreditCards.bank}}</h6>
+                        <span class="opacity-7">付款信用卡</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="banks-contB">
+                    <ion-col></ion-col>
+                    <ion-col>****</ion-col>
+                    <ion-col>****</ion-col>
+                    <ion-col>****</ion-col>
+                    <ion-col>{{App.CurrentCreditCards.cardNo}}</ion-col>
+                </ion-row>
+                <ion-row class="banks-contC">
+                    <ion-col col-2 p-t-10 text-center>
+                        <button ion-button block (click)="ChangeCard()">更换</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <div class="pic">
+                <img src="assets/banklogo/bank_{{App.CurrentCreditCards.code}}_0.png" alt="">
+            </div>
+        </div>
+    </ng-template>
+
+    <!-- 未添加信用卡 -->
+    <ng-template #NullCredit>
+        <div padding-horizontal m-t-10>
+            <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow">
+                <ion-row class="banks-temp">
+                    <ion-col text-center>
+                        请添加付款信用卡
+                    </ion-col>
+                </ion-row>
+                <ion-row class="banks-temp" text-center>
+                    <ion-col col-4 class="infc-btn" [navPush]="App.RootPage.AddcreditsPage" navParams="CreditCardPage">
+                        <button ion-button block >+</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ng-template>
+
+<div p-h-15>
+    <ion-grid class="list-grid-default" m-t-10 no-padding>
+        <div *ngIf="DepositCards.length > 0; then HasDeposit; else NullDeposit"></div>
+        <!-- 已添加储蓄卡 -->
+        <ng-template #HasDeposit>
+            <ion-row align-items-center p-l-10>
+                <ion-col>
+                    <ul class="list-row-inner">
+                        <li class="title infor">收款储蓄卡</li>
+                        <li class="note" text-right>
+                            <span class="bank-face"><img src="assets/banklogo/bank_{{CurrentDepositCard.code}}.png"></span>
+                            <span ion-text color="dark" >{{CurrentDepositCard.bank}}({{CurrentDepositCard.cardNo}})</span>
+                        </li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+        </ng-template>
+        <!-- 未添加储蓄卡 -->
+        <ng-template #NullDeposit>
+            <ion-row align-items-center p-l-10 [navPush]="App.RootPage.AdddepositPage" navParams="CreditCardPage">
+                <ion-col>
+                    <ul class="list-row-inner">
+                        <li class="title infor">收款储蓄卡</li>
+                        <li class="note" text-right><span ion-text color="dark">请添加收款储蓄卡</span></li>
+                        <li class="icon-arrow "><ion-icon></ion-icon></li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+        </ng-template>
+        <p class="bank-tip">收款金额</p>
+        <ion-row p-b-10 p-l-10>
+            <ion-col col-1 text-center f-2-5>￥</ion-col>
+            <ion-col col-11 p-r-20 text-left>
+                <ion-input type="number" placeholder="0.00" [(ngModel)]="Amount.InputAmount" (ngModelChange)="InputAmount()"></ion-input>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="list-grid-default grid-default" m-t-10 text-nowrap p-h-5>
+        <ion-row p-h-10 ion-text p-t-10 color="gray">
+            <ion-col>收款方式</ion-col>
+            <ng-template [ngIf]="App.IsAndroid">
+              <ion-col text-right f-1-3 ion-text color="light-primary" [navPush]="App.RootPage.VIPmembersPage">购买VIP享0.38%费率>></ion-col>
+            </ng-template>
+        </ion-row>
+        <ion-row>
+            <ion-col col-5 [ngStyle]="{'line-height':'1px'}">
+                <ul class="list-row-inner" text-center (click)="ChoseWay(1)">
+                    <li class="title"><i class="has-point active" [ngClass]="{'active': Way.Type == 1}"></i></li>
+                    <li class="note" ion-text color="orange">{{App.UserInfo.rate}}%+2</li>
+                    <li class="note" >无积分</li>
+                </ul>
+            </ion-col>
+            <ion-col col-2></ion-col>
+            <ion-col col-5 [ngStyle]="{'line-height':'1px'}">
+                <ul class="list-row-inner" text-center (click)="ChoseWay(2)">
+                    <li class="title"><i class="has-point" [ngClass]="{'active': Way.Type == 2}"></i></li>
+                    <li class="note" ion-text color="orange">{{App.UserInfo.rate1}}%+2</li>
+                    <li class="note" >有积分</li>
+                </ul>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+
+
+    <!-- <ion-grid  class="grid-header-bar" >
+        <ion-row class="face-cont" align-items-center >
+            <ion-col>
+                <b class="face-tab face-active"><img class="face-nav" src="assets/imgs/zs4.png"></b>
+                <p class="mold">普通会员</p>
+            </ion-col>
+            <ion-col>
+                <b class="face-tab"><img class="face-nav" src="assets/imgs/zs1.png"></b>
+                <p class="mold">黄金会员</p>
+            </ion-col>
+            <ion-col>
+                <b class="face-tab"><img class="face-nav" src="assets/imgs/zs3.png"></b>
+                <p class="mold">铂金会员</p>
+            </ion-col>
+            <ion-col>
+                <b class="face-tab"><img class="face-nav" src="assets/imgs/zs2.png"></b>
+                <p class="mold">钻石会员</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid> -->
+
+    <ion-row justify-content-center m-t-10>
+        <ion-col col-11>
+            <!-- <button class="bgc-grad-primary bgc-header" ion-button block [disabled]="!Amount.InputAmount" (click)="ConfirmPay()">到账金额{{Amount.OutputAmount}}，去确认</button> -->
+            <button class="bgc-grad-primary bgc-header" ion-button round block [disabled]="!Amount.InputAmount" (click)="ConfirmPay()">下一步</button>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+
+
+
+
+

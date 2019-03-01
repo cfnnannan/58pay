@@ -1,0 +1,42 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="register">
+        <div>
+            <ion-grid text-center>
+                <ion-row class="reg-line">
+                    <ion-col col-12>
+                        <input type="Tel" [(ngModel)]="tel" readonly>
+                    </ion-col>
+                </ion-row>
+                <form novalidate [formGroup]="Form_Group" autocomplete="off">
+                    <ion-row class="reg-line">
+                        <ion-col col-7>
+                            <input type="text" placeholder="请输入验证码" formControlName="VCode" required>
+                        </ion-col>
+                        <ion-col col-5>
+                            <button class="smbtn" (click)="GetTelCode()">{{VCodeText}}</button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="reg-line">
+                        <ion-col col-12>
+                            <input [attr.type]="pwdText" placeholder="请设置新密码"  formControlName="pwd" required/>
+                            <img src="assets/imgs/nosee.png" alt="" class="eye" (click)="pwdType()" *ngIf = "!pwdVisible">
+                            <img src="assets/imgs/cansee.png" alt="" class="eye" (click)="pwdType()" *ngIf = "pwdVisible" >
+                        </ion-col>
+                    </ion-row>
+                </form>
+                <ion-row m-t-30>
+                    <ion-col col-12>
+                        <button class="bgc-grad-primary bgc-header " [disabled]="ConfirmBtnIsDisabled" (click)="ConfirmModify()">确认</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>
+    
+    

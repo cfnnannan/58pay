@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle" BtnIcon="&#xf273;" (BtnIconEvent)="AddCards()"></app-toolbar>
+        <!-- <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar> -->
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <div padding-horizontal class="minus-margin" *ngFor="let item of BankList;">
+        <b class="bank-tick" (click)="SelectedCard(item)">
+            <ion-icon *ngIf="item.chose">&#xf2bc;</ion-icon>
+        </b>
+        <ion-grid class="grid-card-banks bgc-grad-primary bgc-top bgc-boxshadow" [ngStyle]="{'justify-content':'start'}">
+            <ion-row class="banks-contA" [ngStyle]="{'padding-top':'15px'}">
+                <ion-col col-2 text-center>
+                    <div class="face">
+                        <img src="assets/banklogo/bank_{{item.code}}.png" alt="">
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <h6 no-margin>{{item.bank}}</h6>
+                    <span class="opacity-7">付款信用卡</span>
+                </ion-col>
+            </ion-row>
+            <ion-row class="banks-contB">
+                <ion-col></ion-col>
+                <ion-col>****</ion-col>
+                <ion-col>****</ion-col>
+                <ion-col>****</ion-col>
+                <ion-col>{{item.cardNo}}</ion-col>
+            </ion-row>
+            <div class="pic">
+                <img src="assets/banklogo/bank_{{item.code}}_0.png" alt="">
+            </div>
+        </ion-grid>
+    </div>
+</ion-content>

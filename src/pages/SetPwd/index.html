@@ -1,0 +1,44 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="register">
+        <!-- <span p-l-45>*密码长度情保持在6-22位的范围内</span> -->
+        <div>
+            <ion-grid text-center>
+                <form novalidate [formGroup]="Form_Group" autocomplete="off">
+                    <ion-row class="reg-line">
+                    <ion-col col-12>
+                        <input [attr.type]="PassWordType" placeholder="请设置密码" formControlName="Pass" required [(ngModel)]="PassWord">
+                        <img src="assets/imgs/nosee.png" alt="" class="eye" (click)="PassType()" *ngIf="!PassClear">
+                        <img src="assets/imgs/cansee.png" alt="" class="eye" (click)="PassType()" *ngIf="PassClear">
+                    </ion-col>
+                </ion-row>
+                <ion-row class="reg-line">
+                    <ion-col col-12>
+                        <input [attr.type]="PassWordType" placeholder="请确认密码"  formControlName="Pass" required [(ngModel)]="ConPassWord">
+                        <img src="assets/imgs/nosee.png" alt="" class="eye" (click)="PassType()" *ngIf="!PassClear">
+                        <img src="assets/imgs/cansee.png" alt="" class="eye" (click)="PassType()" *ngIf="PassClear">
+                    </ion-col>
+                </ion-row>
+                <ion-row m-t-30>
+                    <ion-col col-12>
+                        <button class="bgc-grad-primary bgc-header" (click)="OnRegister()" [disabled]="ResIsDisabled">注册</button>
+                    </ion-col>
+                </ion-row>
+                <!-- <ion-row>
+                    <ion-col col-12 class="notice" (click)="ChooseAgree()">
+                        <span class="check">
+                            <ion-icon name="checkbox-outline" *ngIf="Agree"></ion-icon>
+                            <ion-icon name="square-outline" *ngIf="!Agree"></ion-icon>
+                        </span>
+                        <span f-1-2>我已阅读并同意<span class="name">《58付用户使用协议》</span></span>
+                    </ion-col>
+                </ion-row> -->
+                </form>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>

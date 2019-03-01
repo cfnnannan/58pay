@@ -1,0 +1,63 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="list-grid-default">
+      <ion-row m-l-10>
+        <ion-col>
+            <ul class="list-row-inner">
+                <li class="title">头像</li>
+                <li text-right>                    
+                      <span [class.face-sm-default]="App.IconFace" [class.face-sm-female]="!App.IconFace" text-gray-lighter></span>
+                </li>
+                <!-- <li class="icon-arrow"><ion-icon></ion-icon></li> -->
+            </ul>
+        </ion-col>
+      </ion-row>
+      <ion-row m-l-10>
+        <ion-col>
+          <ul class="list-row-inner" (click)="ChangeNickName()">
+            <li class="title">昵称</li>
+            <li text-right class="text-gray-600">{{UserInfo.nickName}}</li>
+            <li class="icon-arrow"><ion-icon></ion-icon></li>
+          </ul>
+        </ion-col>
+      </ion-row>
+      <ion-row m-l-10>
+          <ion-col>
+            <ul class="list-row-inner">
+              <li class="title">用户ID</li>
+              <li text-right class="text-gray-600">{{UserInfo.userId}}</li>
+            </ul>
+          </ion-col>
+        </ion-row>
+        <ion-row m-l-10>
+            <ion-col>
+              <ul class="list-row-inner">
+                <li class="title">手机号</li>
+                <li text-right class="text-gray-600">{{ShowPhone}}</li>
+              </ul>
+            </ion-col>
+          </ion-row>
+    </ion-grid>
+    <ion-grid class="list-grid-default" m-t-10>
+        <ion-row m-l-10>
+          <ion-col>
+            <ul class="list-row-inner">
+              <li class="title">姓名</li>
+              <li text-right class="text-gray-600">{{infoName}}</li>
+            </ul>
+          </ion-col>
+        </ion-row>
+        <ion-row m-l-10>
+          <ion-col>
+            <ul class="list-row-inner">
+              <li class="title">身份证</li>
+              <li text-right class="text-gray-600">{{ShowID}}</li>
+            </ul>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

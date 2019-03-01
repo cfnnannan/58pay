@@ -1,0 +1,140 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+    <ion-toolbar no-padding>
+        <ion-grid class="list-grid-default bgc-grad-primary">
+            <ion-row padding-vertical>
+                <ion-col>
+                    <ul class="list-row-inner">
+                        <li class="title" text-center>
+                            <div class="bold" f-2-5 ion-text color="light"><span f-1-2>￥</span>{{Params.OutputAmount}}</div>
+                            <p class="color-fopacity-7">收款金额</p>
+                        </li>
+                        <!-- <li class="title slash" text-center><span></span></li> -->
+                        <li class="title" text-center>
+                            <div class="bold" f-2-5 ion-text color="light"><span f-1-2>￥</span>{{Params.InputAmount}}</div>
+                            <p class="color-fopacity-7">到账金额</p>
+                        </li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="grid-inforlist-default" m-b-10>
+        <ion-row class="border-last">
+            <ion-col col-4>收款储蓄卡</ion-col>
+            <ion-col>
+                <span class="bank-face"><img src="assets/banklogo/bank_{{Params.DepositCode}}.png"></span>
+                <span>{{Params.DepositCard}}</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <form novalidate [formGroup]="Form_Group_Info">
+        <ion-grid class="grid-inforlist-default" m-b-10>
+            <ion-row>
+                <ion-col col-4>付款信用卡</ion-col>
+                <ion-col>
+                    <span class="bank-face"><img src="assets/banklogo/bank_{{Params.CreditCode}}.png"></span>
+                    <span>{{Params.CreditCard}}</span>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-4>CVN2</ion-col>
+                <ion-col col-6><ion-input type='number' placeholder="卡片背面末三位数" formControlName="CVN"></ion-input></ion-col>
+                <ion-col (click)="ShowBackEmp()" text-right text-nowrap><span ion-text color="orange">示例</span></ion-col>
+            </ion-row>
+            <ion-row class="border-last">
+                <ion-col col-4>有效期</ion-col>
+                <ion-col col-6><ion-input type='number' placeholder="卡片正面有效期" formControlName="CardDate"></ion-input></ion-col>
+                <ion-col (click)="ShowFrontEmp()" text-right text-nowrap><span ion-text color="orange">示例</span></ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid class="grid-inforlist-default" m-b-10 *ngIf="Voucher.length > 0">
+            <ion-row class="border-last" (click)="ClickUserVoucher()">
+                <ion-col col-4>抵扣券</ion-col>
+                <ion-col col-5><span ion-text color="orange">{{Voucher.length}}张可用</span></ion-col>
+                <ion-col text-right col-2>去使用</ion-col>
+                <ion-col text-right><ion-icon>&#xf3d1;</ion-icon></ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid class="grid-inforlist-default" m-b-10>
+            <ion-row [ngStyle]="{'padding':'6px 12px 5px 0'}">
+                <ion-col col-4>手机号</ion-col>
+                <ion-col col-4>{{Params.Mobile}}</ion-col>
+                <ion-col text-right>
+                    <button class="btn" ion-button p-l-5 p-r-5 f-1-5 [disabled]="VCodeBtnIsDisabled" (click)="GetVerifyCode()" tappable>{{VCodeText}}</button>
+                </ion-col>
+            </ion-row>
+            <ion-row class="border-last">
+                <ion-col col-4>验证码</ion-col>
+                <ion-col><ion-input type='text' placeholder="请输入验证码" formControlName="VerifyCode"></ion-input></ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </form>
+    <!-- <ion-row class="hook-tick">
+        <ion-col>
+            <b (click)="selectTick()"><ion-icon>&#xf2bc;</ion-icon></b>
+            <span>记住这张信用卡的CVN2和有效期</span>
+        </ion-col>
+    </ion-row> -->
+    <!-- <ion-row justify-content-center>
+        <ion-col col-7>
+            <button class="bgc-grad-primary bgc-header" ion-button block  f-1-6 [disabled]="CompleteBtnIsDisabled" (click)="ConfirmCode()" tappable>确认</button>
+        </ion-col>
+    </ion-row> -->
+    <ion-row justify-content-center m-t-10>
+        <ion-col col-11>
+            <button class="bgc-grad-primary bgc-header" ion-button block round f-1-6 [disabled]="CompleteBtnIsDisabled" (click)="ConfirmCode()" tappable>确认</button>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+<!-- 确认信息阴影弹框正面 样式在grid.scss-->
+<div *ngIf="ShowFront">
+    <div class="shadow-bgc"></div>
+    <div class="shadow-cont">
+        <ion-grid>
+            <ion-row justify-content-center>
+                <ion-col col-10 text-center>
+                    <img src="assets/imgs/main1.png">
+                    <div m-t-10 ion-text color="light">
+                        <p no-margin>有效期为信用卡正面"VALID THRU"右侧日期</p>
+                        <p no-margin>如输入"1210"</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row  justify-content-center class="banks-contC">
+                <ion-col col-5>
+                    <button class="small" ion-button block (click)="CloseCard()">知道了</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</div>
+
+<div *ngIf="ShowBack">
+    <div class="shadow-bgc"></div>
+    <!-- 确认信息阴影弹框反面 -->
+    <div class="shadow-cont">
+        <ion-grid>
+            <ion-row justify-content-center>
+                <ion-col col-10 text-center>
+                    <img src="assets/imgs/main2.png">
+                    <div m-t-10 ion-text color="light">
+                        <p no-margin>CVN2为信用卡背面末三位数字</p>
+                        <p no-margin>如输入"267"</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row  justify-content-center class="banks-contC">
+                <ion-col col-5>
+                    <button class="small" ion-button block (click)="CloseCard()">知道了</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</div>

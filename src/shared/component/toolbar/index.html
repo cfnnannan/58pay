@@ -1,0 +1,22 @@
+<div class="app-toolbar-primary" [class.cover-color]="CoverColor">
+  <div class="toolbar-buttons">
+    <ng-template [ngIf]="HasBack">
+      <button ion-button class="back-bar-button" navPop tappable></button>
+    </ng-template>
+  </div>
+  <div class="toolbar-title">
+    <span>{{Title}}</span>
+  </div>
+  <div class="toolbar-buttons">
+    <ng-template [ngIf]="BtnIcon">
+      <button ion-button (click)="BtnIconEvent.emit()" tappable>
+        <ion-icon [class.app-icon]="AppIcon" [innerHTML]="BtnIcon"></ion-icon>
+      </button>
+    </ng-template>
+    <ng-template [ngIf]="BtnText">
+      <button ion-button (click)="BtnTextEvent.emit()" tappable>
+        {{BtnText}}
+      </button>
+    </ng-template>
+  </div>
+</div>

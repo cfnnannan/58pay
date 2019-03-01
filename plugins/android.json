@@ -1,0 +1,50 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-wechat": {
+      "WECHATAPPID": "wx4f67e62f44b0a166",
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.werunpay"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.werunpay"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.werunpay"
+    }
+  }
+}

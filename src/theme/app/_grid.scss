@@ -1,0 +1,721 @@
+ion-row {
+    //***** 垂直方向排列 *****//
+    &[column] {
+        flex-direction: column;
+        ion-col {
+            min-height: auto;
+        }
+    }
+}
+
+//首页
+.grid-header-bar {
+    &.tip {
+        hr {
+            margin-top: 11px;
+        }
+    }
+    ion-row {
+        &.face-cont {
+            ion-col {
+                text-align: center;
+                b.face-active {
+                    display: inline-block;
+                    width: 60%;
+                    height: 0;
+                    padding: 29% 0;
+                    border-radius: 50%;
+                    background: #ffffff;
+                    overflow: hidden;
+                    position: relative;
+                    -webkit-box-shadow: 0 0px 6px 3px #7aa0da inset;
+                    box-shadow: 0 0px 6px 3px #7aa0da inset;
+                    border-top: 1px solid #1C83D2;
+                    border-left: 1px solid #1C83D2;
+                    img.face {
+                        width: 50%;
+                        position: absolute;
+                        top: 25%;
+                        left: 25%;
+                    }
+                }
+                b.face-tab {
+                    display: inline-block;
+                    width: 66%;
+                    height: 0;
+                    padding: 32% 0;
+                    border-radius: 50%;
+                    background: #ffffff;
+                    overflow: hidden;
+                    position: relative; // border-top: 1px solid transparent;
+                    // border-left: 1px solid transparent;
+                    img.face-nav {
+                        width: 70%;
+                        position: absolute;
+                        top: 20%;
+                        left: 15%;
+                    }
+                }
+                p {
+                    // font-size: 1.5rem;
+                    margin: 3px 0;
+                    color: $light;
+                    &.mold {
+                        color: $gray-600;
+                    }
+                }
+            }
+        }
+        &.banner-cont {
+            padding: 5px 0 5px 20px;
+            ion-col {
+                padding-top: 20px;
+                img.banner-face {
+                    height: 120px;
+                }
+                h3 {
+                    white-space: nowrap;
+                    margin: 30px 0 5px 0;
+                    b {
+                        color: $primary;
+                    }
+                }
+                p {
+                    margin: 5px 0;
+                    color: $gray;
+                }
+                div {
+                    margin: 5px 0;
+                    color: $gray-500;
+                    span {
+                        border: 1px solid $gray-400;
+                        border-radius: 3px;
+                    }
+                }
+            }
+        }
+        &.floor-cont {
+            align-items: center;
+            ion-col {
+                margin-bottom: 5px;
+                white-space: nowrap;
+                p {
+                    margin: 0;
+                }
+                div {
+                    text-align: center;
+                }
+                ion-row {
+                    ion-col {
+                        .tip-text {
+                            color: $light;
+                            padding-bottom: 2px;
+                            font-size: 1.2rem;
+                            border-radius: 0 5px 25px 0;
+                            font-style: normal;
+                            &.tip-textA {
+                                background-color: #949694;
+                            }
+                            &.tip-textB {
+                                background-color: #cea263;
+                            }
+                            &.tip-textC {
+                                background-color: #422808;
+                            }
+                        }
+                    }
+                }
+                img {
+                    border-radius: 25%;
+                }
+                h6 {
+                    color: $gray;
+                }
+            }
+        }
+    }
+    .home-bank {
+        //首页银行卡宣传
+        text-align: center;
+        ion-col {
+            img {
+                width: 85%;
+                height: 88%;
+                border-radius: 5px;
+            }
+            h6 {
+                margin-top: 5px;
+            }
+            p {
+                margin-top: 10px;
+                color: gray;
+            }
+        }
+    }
+}
+
+// 首页头部效果2
+.home-header {
+    background-color: white;
+    .rel-grid {
+        margin-top: -30px;
+        .header-btm {
+            text-align: center;
+            div {
+                display: inline-block;
+                background: $white;
+                border-radius: 5px;
+                border: 5px solid $white;
+                width: 50%;
+            }
+            .option-sm {
+                display: inline-block;
+                width: 66%;
+                height: 0;
+                padding: 32% 0;
+                border-radius: 50%;
+                background: $white;
+                overflow: hidden;
+                position: relative;
+                box-shadow: 0 0px 6px 3px #7aa0da inset;
+                border-top: 1px solid #1C83D2;
+                border-left: 1px solid #1C83D2;
+                img {
+                    width: 50%;
+                    position: absolute;
+                    top: 25%;
+                    left: 25%;
+                }
+            }
+        }
+    }
+}
+
+.fixed-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+//刷卡提现
+div {
+    position: relative;
+    .grid-card-banks {
+        min-height: 28vh;
+        border-radius: 10px;
+        justify-content: center;
+        ion-row {
+            color: $light;
+            align-items: center;
+            &.banks-temp {
+                justify-content: center;
+                font-size: 1.75rem;
+                ion-col.infc-btn {
+                    button {
+                        height: 2.0rem;
+                        border-radius: 15px;
+                        border: 1px solid #fff;
+                        background-color: transparent;
+                        font-size: 1.3rem;
+                        text-align: center;
+                    }
+                }
+            }
+            &.banks-contA {
+                align-items: start;
+                padding: 5px 0 5px 0;
+                ion-col {
+                    padding: 0;
+                    div.face {
+                        background-size: contain;
+                        border-radius: 50%;
+                        background-color: #fff;
+                        display: inline-block;
+                        width: 68%;
+                        padding: 33% 0;
+                        position: relative;
+                        img {
+                            position: absolute;
+                            top: 22%;
+                            left: 22%;
+                            width: 56%;
+                        }
+                    }
+                }
+            }
+            &.banks-contB {
+                text-align: center;
+                padding: 20px 10px 20px 0;
+                font-size: 2.5rem;
+                white-space: nowrap;
+                text-align: right;
+                ion-col {
+                    padding: 0;
+                    &:last-child {
+                        margin-top: -10px;
+                    }
+                }
+            }
+        }
+    }
+    .banks-contC {
+        justify-content: flex-end;
+        z-index: 999;
+        ion-col {
+            button {
+                height: 2.0rem;
+                border-radius: 15px;
+                border: 1px solid $gray-200;
+                background-color: transparent;
+                font-size: 1.3rem;
+                text-align: center;
+                &.small {
+                    border-radius: 5px;
+                    height: 3.0rem;
+                }
+            }
+        }
+    }
+    .pic {
+        overflow: hidden;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        bottom: -14px;
+        right: 0px;
+        opacity: .2;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+//银行卡确认信息end
+.grid-confirm-card {
+    min-height: 200px;
+    justify-content: center;
+    align-items: center;
+    ion-col {
+        padding: 16px 5px;
+        img.hook-face {
+            width: 105px;
+            height: 100px;
+            padding: 5%;
+            border-radius: 50%;
+            border: 0;
+        }
+        p {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            margin-bottom: 0;
+            span {
+                margin-left: 5px;
+            }
+        }
+        div {
+            margin: 0;
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+}
+
+//银行卡确认信息背景、添加银行卡错误、身份认证背景阴影
+div {
+    .shadow-cont {
+        position: absolute;
+        top: 25%;
+        left: 0%;
+        z-index: 9999;
+        &.shadow-contA {
+            min-width: 43vh;
+            position: absolute;
+            top: 30%;
+            left: 12%;
+            background: #fff;
+            border-radius: 10px;
+            div {
+                display: inline-block;
+                margin: 10px 0;
+            }
+        }
+        &.shadow-contC {
+            top: 25%;
+            margin: 20px;
+            background: #fff;
+            border-radius: 10px;
+            ion-grid {
+                padding: 0;
+                border-radius: 10px;
+                ion-row {
+                    align-items: flex-end;
+                    justify-content: center;
+                    position: relative;
+                    ion-col {
+                        padding: 0; // font-size: 1.6rem;
+                        ion-input {
+                            border-bottom: 1px solid $gray-300;
+                        }
+                    }
+                    b.certify-mark {
+                        width: 120px;
+                        height: 55px;
+                        text-align: center;
+                        line-height: 54px;
+                        color: red;
+                        border: 1px solid red;
+                        position: absolute;
+                        top: 30px;
+                        left: 170px;
+                        -webkit-transform: rotate(-30deg);
+                        span {
+                            border: 2px solid red;
+                            padding: 10px 21px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//我的头部
+.grid-mine-header {
+    padding: 0;
+    color: $white;
+    .header-user-img {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-size: cover;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover; // display: inline-block;
+    }
+    img.vipface {
+        width: 35%!important;
+    } 
+}
+
+//红包礼券头部
+.grid-row-default {
+    background-color: $white;
+    ion-row {
+        ion-col {
+            padding: 15px 0!important;
+            &.active {
+                border-bottom: 3px solid $orange;
+            }
+        }
+        &.justify-evenly {
+            justify-content: space-evenly;
+        }
+    }
+}
+
+//默认卡片列表
+.grid-card-default {
+    ion-row {
+        margin-bottom: 16px;
+    }
+    .card-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-left: dotted 3px #1d83d2;
+        text-align: center;
+        background: radial-gradient(circle at top right, transparent 1rem, #1d83d2 0) top right, radial-gradient(circle at bottom right, transparent 1rem, #1d83d2 0) bottom right;
+        label {
+            display: inline-block;
+            margin-top: -1rem; // font-size: 1.5rem;
+        }
+        em {
+            font-style: normal;
+        }
+    }
+    .card-overdue {
+        border-left: dotted 3px #c2c2c2;
+        background: radial-gradient(circle at top right, transparent 1rem, #c2c2c2 0) top right, radial-gradient(circle at bottom right, transparent 1rem, #c2c2c2 0) bottom right;
+    }
+    .card-description {
+        background: radial-gradient(circle at top left, transparent 1rem, #fff 0) top right, radial-gradient(circle at bottom left, transparent 1rem, #fff 0) bottom left;
+        h2 {
+            margin: 0;
+            padding: 10px 0 10px 10px;
+            border-bottom: dashed 1px $gray-300; // font-size: 1.5rem;
+            overflow: hidden;
+        }
+        ul {
+            margin: 0;
+            padding: 5px 0 5px 25px;
+            li {
+                white-space: nowrap;
+                padding: 3px 0;
+                font-size: 1.35rem;
+                b.gift-tick {
+                    background-color: orange;
+                    display: inline-block;
+                    border-radius: 50%;
+                    position: relative;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 1.3rem;
+                    width: 15px;
+                    height: 15px;
+                    float: right;
+                    &.no-tick {
+                        background-color: $white;
+                        border: 1px solid orange;
+                    }
+                }
+            }
+        }
+        img {
+            width: 55px;
+            height: 35px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            &.img-overdue {
+                width: 140px;
+                height: 100px;
+            }
+        }
+    }
+    .card-value,
+    .card-description,
+    .card-overdue {
+        overflow: hidden;
+        min-height: 100px;
+        background-size: 100% 80%;
+        background-repeat: no-repeat;
+    }
+}
+
+ion-grid.grid-form {
+    padding: 0;
+    ion-col {
+        padding: 0;
+        border-bottom: $border-light-default;
+        &.last-child {
+            border-bottom-color: transparent;
+        }
+        input[type=text],
+        input[type=tel],
+        input[type=password] {
+            padding: 0 15px;
+            border: none;
+            width: 100%;
+            height: 44px;
+        }
+        button.btn-vcode {
+            position: absolute;
+            padding: 8px 10px;
+            top: 8px;
+            right: 15px;
+            border: none;
+            background-color: $green;
+            color: white;
+            font-size: 1.2rem;
+            &.disabled {
+                background-color: $gray-200;
+                color: $gray-600;
+            }
+        }
+    }
+} //信息列表默认
+ion-grid {
+    &.grid-inforlist-default {
+        padding: 0 0 0 20px;
+        background-color: #fff;
+        ion-row {
+            padding: 13px 12px 13px 0;
+            align-items: center;
+            border-bottom: 1px solid $gray-200;
+            ion-col {
+                padding: 0;
+                ion-input .text-input {
+                    margin: 0;
+                }
+                ion-icon {
+                    color: $gray-400;
+                    font-size: 2.0rem;
+                }
+                span.bank-face {
+                    vertical-align: sub;
+                    img {
+                        width: 8%;
+                    }
+                }
+            }
+        }
+    }
+    .btn {
+        background: transparent;
+        color: $primary;
+        height: 2.0rem;
+        font-size: 1.2rem;
+        border: 1px solid $primary;
+    }
+    .auth-ipt {
+        border-bottom: 1px solid $gray-300;  //身份认证
+    }
+} 
+
+//vip
+.location-cont {
+    position: relative;
+    z-index: 999;
+    top: 8%;
+    left: 0%;
+    width: 100%;
+    margin-top: -52px;
+}
+
+// ion-grid {
+//     &.grid-vip-cont {
+//         background-color: #fff;
+//         border-radius: 10px;
+//         -webkit-box-shadow: 0 2px 5px 1px #e8e8e8;
+//         box-shadow: 0 2px 5px 1px #e8e8e8;
+//         ion-row {
+//             align-items: center;
+//             &.header-user {
+//                 padding: 5px 0;
+//                 ion-col {
+//                     text-align: center;
+//                     white-space: nowrap;
+//                 }
+//             }
+//             &.header-explain {
+//                 align-items: center;
+//                 text-align: center;
+//                 margin: 3% 3% 2% 3%;
+//                 background-color: #b9d9f1;
+//                 border-radius: 10px;
+//                 ion-col {
+//                     margin: 10px 0;
+//                     padding: 0;
+//                     border-right: 1px solid #dbecf8;
+//                     h5 {
+//                         color: #6ca4d3;
+//                         margin: 0;
+//                     }
+//                     p {
+//                         margin: 10px 0 0 0;
+//                         color: #fff;
+//                         font-weight: 600;
+//                     }
+//                     &:last-child {
+//                         border-right-color: transparent;
+//                     }
+//                 }
+//             }
+//             &.face-cont-vip {
+//                 align-items: center;
+//                 border-radius: 60px;
+//                 background-color: #e2eff9;
+//                 margin: 8px;
+//                 padding: 5px 2px;
+//                 ion-col {
+//                     white-space: nowrap;
+//                     padding: 0;
+//                     h5 {
+//                         margin: 0;
+//                         font-size: 2.3rem;
+//                     }
+//                     h6 {
+//                         margin-top: 0;
+//                         color: gray;
+//                     }
+//                     b.face-tab {
+//                         width: 60%;
+//                         padding: 28% 0;
+//                     }
+//                     &.border {
+//                         border-right: 1px solid #fff;
+//                     }
+//                 }
+//                 &.active {
+//                     border: 2px solid $primary;
+//                     -webkit-box-shadow: 0 0px 10px 2px #91c0e7;
+//                     box-shadow: 0 0px 10px 2px #91c0e7;
+//                 }
+//                 &.no-active {
+//                     opacity: .4;
+//                 }
+//             }
+//         }
+//         .foor-face {
+//             margin-top: -45px;
+//             padding: 0 40px;
+//         }
+//     }
+// }
+
+img.user-face {
+    border-radius: 50%;
+    width: 15%;
+    border: 3px solid $primary;
+    position: absolute;
+    top: -8%;
+    left: 6%;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+    &.radius-gray {
+        padding: 3px;
+        background-color: $light;
+        border-radius: 15px;
+    }
+    span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+
+//vip确认
+ion-grid {
+    &.vip-list {
+        border: 1px solid $gray-300;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        .vip-item {
+            align-items: center;
+            padding: 0 12px;
+            h4 {
+                font-size: 1.7rem;
+                margin: 5px 0;
+                font-weight: 600;
+            }
+            p {
+                margin: 0;
+                font-size: 1.3rem;
+            } 
+            b {
+                white-space: nowrap;
+                font-size: 2.3rem;
+                margin: 0;
+                color: #c00000;
+            }
+        }   
+    &.active {
+        border: 1px solid #c00000;
+        }
+    &.pay {
+        border: 1px solid transparent;
+        }
+    }
+}
+

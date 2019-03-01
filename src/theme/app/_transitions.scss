@@ -1,0 +1,10 @@
+$transition-collapse:  all .5s ease !default;
+
+.collapse {
+  transition: $transition-collapse;
+  transform-origin: left top;
+  transform: scale(1,0);
+  &.show {
+    transform: scale(1,1);
+  }
+}

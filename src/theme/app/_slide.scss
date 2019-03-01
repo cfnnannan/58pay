@@ -1,0 +1,107 @@
+
+.start-slide {
+    .swiper-container-horizontal > .swiper-pagination-bullets{
+        bottom: 4vh;
+        .swiper-pagination-bullet{
+            width: 3vw;
+            height: 3vw;
+            opacity: .8;
+        }
+        button{
+            background: rgba(255, 255, 255, 0);
+            border: 1px solid $white;
+        }
+        .swiper-pagination-bullet-active{
+            background: $white;
+        }
+    }
+
+    .swiper-slide{
+        display: block;
+    }
+    ion-slide{
+        .bg{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url('../assets/imgs/start-bg-1.png') center center;
+            background-size: 100% 100%;
+            // .wall{
+            //     width: 100%;
+            //     height: 42vh;
+            // }
+            .title{
+                width: 70vw;
+                position: absolute;
+                top: 8vh;
+                left: 50%;
+                margin-left: -20vw;
+            }
+            .sub-title{
+                margin: 0;
+                width: 50vw;
+                height: 4vh;
+                line-height: 4vh;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .8) 60%,  rgba(255, 255, 255, .8) 40%, rgba(255, 255, 255, 0) 100%);
+                position: absolute;
+                top: 22vh;
+                left: 50%;
+                margin-left: -25vw;
+                color: color($colors, light-primary);
+                font-size: 2rem;
+                font-weight: 100;
+            }
+            .font-img{
+                margin-top: -8vh;
+                img{
+                    width: 42vw;
+                }
+                .box > div{
+                   line-height: 18vw;
+                }
+            }
+            .info {
+                margin-top: 5vh;
+                div  {
+                    background-color: #fff;
+                    color: #1d83d2;
+                    display: inline-block;
+                    border-radius: 25px;
+                    padding: 3px 40px;
+                    &:first-child {
+                        margin-right: 10%;
+                    }
+                }
+            }
+            .welcome{
+                width: 56vw;
+                height: 6vh;
+                position: absolute;
+                top: 18vh;
+                left: 50%;
+                margin-left: -28vw;
+            }
+            .box{
+                text-align: center;
+                margin-top: -3vh;
+                .font{
+                    margin-top: 10vh;
+                    margin-bottom: 15vh;
+                    width: 26vw;
+                }
+                & > div{
+                    width: 14vw;
+                    height: 14vw;
+                    border-radius: 50%;
+                    margin: 2vh auto;
+                    line-height: 14vw;
+                    box-shadow: inset 0 -5px 3px #7ebbe8, inset 0 6px 10px #01497b, inset 4px 0 5px #7ebbe8;
+                    img{
+                        width: 60%;
+                    }
+                }
+            }
+        }
+
+    }
+}

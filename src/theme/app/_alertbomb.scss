@@ -1,0 +1,27 @@
+//银行卡确认信息
+    .bomb-box {     
+        .alert-wrapper {
+            border-radius: 13px;
+            overflow: hidden;
+            max-width: 270px;
+            background-color: black;
+            box-shadow: none;
+            opacity: .5!important;
+            transform: scale(1);
+            color: #fff;
+        
+        }   
+        .alert-title {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 1.55rem!important;
+        }
+        .alert-sub-title {
+            margin: 5px 0 0;
+            padding: 0 50px;
+            color: #fff;
+            font-size: 1.55rem!important;
+        }
+    }
+   

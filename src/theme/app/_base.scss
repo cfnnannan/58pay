@@ -1,0 +1,99 @@
+* {
+    @include FontGeneration();
+    @include InOutSide();
+    @include textStyle();
+    @include textColor();
+    @include opacity();
+}
+.padding-0 {
+    padding: 0!important;
+}
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+button {
+    box-shadow: none!important;
+}
+
+.scroll-content {
+    background: color($colors, light);
+}
+.color-white {
+    color: $white!important;
+}
+.opacity-8 {
+    opacity: .8;
+}
+.opacity-7 {
+    opacity: .7;
+}
+.opacity-5 {
+    opacity: .5;
+}
+.opacity-3 {
+    opacity: .3;
+}
+.color-fopacity-7 {
+    color: $white!important;
+    opacity: .7!important;
+}
+.bold {
+    font-weight: 700;
+}
+
+.border-last {
+   border-color: transparent!important;
+}
+// .padd-btn {
+//     padding: 7px 12px 8px 0!important;
+//  }
+
+
+.action-sheet-button.action-sheet-cust .button-inner img {
+    background: url(../../assets/imgs/58icon.png)no-repeat center center;
+    background-size: cover;
+}
+
+.start-app {
+    background: #fff;
+    position: relative;
+    width: 100%;
+    height: 100%;
+//   background: url(../assets/imgs/start-bg-1.png) no-repeat center center;
+  background-size: 100% 100%;
+  .action-btn{
+    width: 100%;
+    position: absolute;
+    bottom:30px;
+  }
+  .action-btn button{
+    box-shadow: none;
+    border-radius: 25px;
+    border: solid 1px $primary;
+    color: white;
+    &.active {
+        background-color: #fff;
+        color: $primary;
+    }
+  }
+  .wall {
+      padding-top: 15vh;
+      p {
+          margin: 5px 0;
+          font-size: 1.8rem;
+          font-family: SimHei;
+          font-weight: 600;
+      }
+      ion-row {
+          color: $primary;
+          ion-col {
+              b {
+                  font-family: SimHei;
+                  font-size: 2.5rem;
+              }
+          }
+      }
+  }
+}

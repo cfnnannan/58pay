@@ -1,0 +1,28 @@
+
+<ion-header>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="headTitle"></app-toolbar>
+    </ion-toolbar> 
+    <!-- <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="presentPopover($event)">
+            <ion-icon name="more"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-toolbar> -->
+  </ion-header>
+
+  <ion-content class="content"> <!--scroll="true" overflow-scroll="true"-->
+    <div class="progress" [hidden]="browser.isLoaded">
+      <div class="progress-inner" id="progress"></div>
+    </div>
+    <div *ngIf = "flag">
+      <iframe id="iframe" class="iframe"
+              sandbox="allow-scripts allow-top-navigation allow-pointer-lock allow-same-origin allow-popups allow-forms"
+              (load)="loaded()"
+              name = "brower">
+      </iframe>
+      <div [innerHtml]="htmltext"></div>
+    </div>
+    <div *ngIf = "!flag" [innerHtml]="this_html"></div>
+  </ion-content>

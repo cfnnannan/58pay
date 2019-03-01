@@ -1,0 +1,44 @@
+
+.action-sheet-group {
+    text-align: center;
+    .action-sheet-title {
+        text-align: center;
+    }
+}
+.action-sheet-button.action-sheet-cust {
+    width: auto;
+    text-align: center;
+    font-size: 1rem;
+    .button-inner {
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        ion-icon {
+            margin: 0 0 15px 0;
+            flex: 1 1 100%;
+        }
+    }
+    .action-sheet-title {
+        text-align: center;
+    }
+}
+
+.action-sheet-friends {
+    .action-sheet-icon {
+        background: url(../assets/imgs/wxpyq.png) no-repeat center center;
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        margin: 0 0 5px 0!important;
+    }
+}
+
+.action-sheet-wx {
+    .action-sheet-icon {
+        background: url(../assets/imgs/wxhy.png) no-repeat center center;
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        margin: 0 0 5px 0!important;
+    }
+}

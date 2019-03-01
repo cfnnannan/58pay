@@ -1,0 +1,170 @@
+$size:16px;
+$InsideOutsideEdge:( margin: (margin, $size), no-margin:(margin, 0), margin-horizontal:(margin, 0 $size), margin-vertical:(margin, $size 0), margin-left:(margin-left, $size), margin-right:(margin-right, $size), margin-top:(margin-top, $size), margin-bottom:(margin-bottom, $size),
+padding:(padding, $size), no-padding:(padding, 0), padding-horizontal:(padding, 0 $size), padding-vertical:(padding, $size 0), padding-left:(padding-left, $size), padding-right:(padding-right, $size), padding-top:(padding-top, $size), padding-bottom:(padding-bottom, $size));
+$InsideOutsideTag: 'm',
+'n-m',
+'p';
+$InsideOutsideDirection: '',
+'v',
+'h',
+'l',
+'r',
+'t',
+'b';
+@mixin FontGeneration($maxsize:80, $num:9) {
+    @for $i from 10 through $maxsize {
+        &[f-#{$i}],
+        &.f-#{$i} {
+            font-size: $i+px;
+        }
+    }
+    @for $i from 1 through $num {
+        @for $j from 0 through $num {
+            &[f-#{$i}-#{$j}],
+            &.f-#{$i}-#{$j} {
+                font-size: $i + $j/10 + rem;
+            }
+        }
+    }
+}
+
+@mixin ReTagNameResult($tag, $name, $size) {
+    $tagName: IsMargin($tag);
+    $tosize: #{IsNeg($tag)}$size+px;
+    @if($name=="") {
+        #{$tagName}: $tosize;
+    }
+    @if($name=="v") {
+        #{$tagName}-top: $tosize;
+        #{$tagName}-bottom: $tosize;
+    }
+    @if($name=="h") {
+        #{$tagName}-left: $tosize;
+        #{$tagName}-right: $tosize;
+    }
+    @if($name=="l") {
+        #{$tagName}-left: $tosize;
+    }
+    @if($name=="r") {
+        #{$tagName}-right: $tosize;
+    }
+    @if($name=="t") {
+        #{$tagName}-top: $tosize;
+    }
+    @if($name=="b") {
+        #{$tagName}-bottom: $tosize;
+    }
+}
+
+@mixin InOutSide($maxsize:80) {
+    @each $name,
+    $keys in $InsideOutsideEdge {
+        &[#{$name}],
+        &.#{$name} {
+            #{nth($keys, 1)}: #{nth($keys, 2)};
+        }
+    }
+    @each $tag in $InsideOutsideTag {
+        @each $name in $InsideOutsideDirection {
+            @for $i from 5 through $maxsize {
+                @if($i%5==0) {
+                    &[#{$tag}#{ReTagName($name)}-#{$i}],
+                    &.#{$tag}#{ReTagName($name)}-#{$i} {
+                        @include ReTagNameResult($tag, $name, $i);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin gradient-x($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+}
+
+@mixin gradient-y($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+}
+
+@mixin bg-variant($parent, $color) {
+    #{$parent} {
+        background-color: $color !important;
+    }
+}
+
+@mixin tx-variant($parent, $color) {
+    #{$parent} {
+        color: $color !important;
+    }
+}
+
+@mixin textStyle() {
+    &[text-nowrap] {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &[text-light] {
+        color: $white;
+    }
+    &[text-gray] {
+        color: $gray;
+    }
+    &[text-gray-light] {
+        color: $gray-light;
+    }
+    &[text-gray-lighter] {
+        color: $gray-lighter;
+    }
+    &[text-success] {
+        color: $green;
+    }
+    &[text-danger] {
+        color: color($colors, danger, base);
+    }
+}
+
+@mixin textColor() {
+    @each $color,
+    $value in $grays {
+        @include tx-variant(".text-gray-#{$color}", $value);
+    }
+}
+
+@mixin opacity($maxsize:10) {
+    @for $i from 0 through $maxsize {
+        &[opacity-#{$i}] {
+            opacity: $i/10;
+        }
+    }
+}
+
+@mixin Position() {
+    &[relative] {
+        position: relative;
+    }
+    &[absolute] {
+        position: absolute;
+    }
+}
+
+@mixin FixedPage() {
+    position: fixed;
+    z-index: 100;
+    &.bottom {
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    &.right-bottom {
+        right: 0;
+        bottom: 0;
+    }
+}
+
+
+
+

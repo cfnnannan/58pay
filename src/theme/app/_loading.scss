@@ -1,0 +1,15 @@
+.loading-default {
+  .loading-wrapper {
+      background: transparent;
+      box-shadow: none;
+      .loading-spinner {
+          ion-spinner {
+              width: 56px;
+              height: 56px;
+              circle {
+                  stroke: #fff;
+              }
+          }
+      }
+  }
+}

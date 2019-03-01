@@ -1,0 +1,28 @@
+$tabIconName: 'tab-home' 'tab-dr' 'tab-card' 'tab-mine';
+@each $name in $tabIconName {
+    .ion-ios-#{$name},
+    .ion-ios-#{$name}-outline,
+    .ion-md-#{$name},
+    .ion-md-#{$name}-outline,
+    {
+        font-family: 'appicon';
+        &::before {
+            @if($name=="tab-home") {
+                content: "\e902";
+            }
+            @if($name=="tab-dr") {
+                content: "\e904";
+            }
+            @if($name=="tab-card") {
+                content: "\e900";
+            }
+            @if($name=="tab-mine") {
+                content: "\e905";
+            }
+        }
+    }
+}
+
+.tabs .tab-button-text {
+    font-size: .8rem;
+}

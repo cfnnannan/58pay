@@ -1,0 +1,316 @@
+.charts-panel {
+    height: auto;
+    overflow: hidden;
+    transition: all .5s ease;
+    transform-origin: left top;
+    transform: scale(1, 0);
+    background: $white;
+    &.show {
+        transform: scale(1, 1);
+    }
+}
+
+.range-option {
+    // background: $baby-blue;
+    background-color: #fff;
+    // color: #fff;
+}
+
+.selected {
+    // background: #fff;
+    // color: color($colors, dark);
+    border-bottom: 3px solid #f0ad4e;
+}
+
+.bar-height {
+    height: 44px;
+}
+
+.option-height {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.option-height-c {
+        height: 50px;
+    }
+    &.option-height-d {
+        height: 60px;
+    }
+}
+
+.panel-height {
+    height: 22vh;
+}
+
+.bar-top {
+    margin-top: 22vh;
+}
+
+.scale-chart {
+    animation: myfirst 1s;
+    @keyframes myfirst {
+        0% {
+            height: 245px;
+            transform: scale(1, 1)
+        }
+        100% {
+            height: 0;
+            transform: scale(1, 0)
+        }
+    }
+    transform: scale(1, 0);
+    height: 0;
+}
+
+.scale-list {
+    animation: mythird 1s;
+    @keyframes mythird {
+        0% {
+            height: 60px;
+            transform: scale(1, 1)
+        }
+        100% {
+            height: 0;
+            transform: scale(1, 0)
+        }
+    }
+    transform: scale(1, 0);
+    height: 0;
+}
+
+.profit-bar {
+    position: relative;
+    .profit-bar-header {
+        background: $primary;
+        opacity: .5;
+        position: absolute;
+        top: -3px;
+        left: 0;
+        height: 36px;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 15px;
+        .triangle {
+            width: 0;
+            height: 0;
+            border-top: 18px solid transparent;
+            border-right: 15px solid #fff;
+            border-bottom: 18px solid transparent;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .profit-bar-content {
+        height: 30px;
+        padding-left: 30%;
+        display: flex;
+        align-items: center;
+        .profit-amount {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+        }
+        .profit-content {
+            display: inline-block;
+            height: 30px;
+            overflow: hidden;
+        }
+    }
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: 5px;
+    .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+.iframe {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    overflow: auto;
+    border: none;
+}
+
+.progress {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: .2rem;
+    background: #f5f5f5;
+    z-index: 200;
+    .progress-inner {
+        width: 0;
+        background: color($colors, primary);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        box-shadow: 0 0 10px $primary;
+        -webkit-transition: width 0.4s ease;
+        transition: width 0.4s ease;
+    }
+}
+
+.minus-margin {
+    position: relative;
+    margin-top: -10%;
+    &.card-margin {
+        margin-top: 25px!important;
+    }
+    &:first-child {
+        margin-top: 10px;
+    }
+}
+
+.register{
+    width: 100%;
+    height: 100%;
+    ion-row.back-btn {
+        padding: 5px 0;
+        align-items: center;
+        text-align: center;
+        // background-color: $primary;
+        span {
+            color: #fff;
+            font-weight: 600;
+            // ion-icon {
+            //     font-size: 2.0rem;
+            // }
+        }
+    }
+    ion-row {
+        align-items: center;
+        &.reg-line {
+            border-bottom: 1px solid $gray-300 !important;
+        }
+    }
+    & > div{
+        width: 80vw;
+        margin: 0 auto;
+        input{
+            background-color: transparent;
+            border: none;
+            width: 100%;
+            height: 4rem;
+        }
+        button{
+            border-radius: 2rem;
+            height: 4rem;
+            width: 100%;
+            color: $white;
+            &.smbtn{
+                background-color: transparent;
+                color: $primary;
+                border: 1px solid $primary;
+                border-radius: 5px;
+                height: 2.0rem;
+                box-shadow: none;
+                font-size: 1.2rem;
+            }
+        }
+        .eye{
+            width: 2rem;
+            position: absolute;
+            right: 5vw;
+            top: 32%;
+        }
+        .notice{
+            // color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .check{
+                width: 1.4rem;
+                height: 1.4rem;
+                margin-right: .2rem;
+            }
+        }
+    }
+}
+
+
+//宣传页面
+.bgc-publicity {
+    background: url(../../assets/imgs/bgc.png) no-repeat center center;
+    background-size: cover; 
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    ion-row.text-publicity {
+        padding: 30% 0 30% 0;
+    }
+    ion-row.go-publicity {
+        justify-content: center;
+        padding: 0 0 5% 0;
+        ion-col{
+            button {
+                background: -webkit-linear-gradient(#fffd00, #ff7401);
+                height: 5.0rem;
+                border: 0;
+                strong {
+                    font-size: 4.5rem;
+                    color:red;
+                }
+                img {
+                    height: 35%;
+                }
+            }
+        }
+    }
+    img.face-log {
+        width: 25%;
+    }
+}
+
+//图标集
+.hook-tick {     //记住信用卡
+    justify-content: center;
+    font-size: 1.6rem;
+    ion-col {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        text-align: center;
+        b {
+            border: 1px solid $gray-500;
+            background-color: #fff;
+            display: inline-block;
+            border-radius: 50%;
+            position: relative;
+            text-align: center;
+            color: orange;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+.bank-tick {   //信用卡更换
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    border: 1px solid $gray-500;
+    background-color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    color: orange;
+    font-size: 1.45rem;
+    width: 20px;
+    height: 20px;
+    z-index: 999;
+}
+.card-del {  //信用卡删除
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.0rem;
+    color: #fff;
+    z-index: 999;
+}

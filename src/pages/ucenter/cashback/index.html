@@ -1,0 +1,49 @@
+<ion-header no-border>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="TitleText"></app-toolbar>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <app-panel  [Title]="TolAmount" Name="余额"></app-panel>
+
+    <ion-grid class="bgc-grad-primary reverse" align-items-center>
+        <ion-row [ngStyle]="{'opacity':OpacityVue}">
+            <ion-col col-6 text-light>累计总额：￥1080.66</ion-col>
+            <ion-col col-6 text-right text-light>累计提现：￥24.56</ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div *ngIf="data.length == 0; then nullBlock; else listBlock"></div>
+    <ng-template #nullBlock>
+        <div text-center p-t-50>
+            <img src="assets/imgs/nulldata.png" alt="" width="150px">
+            <p text-center ion-text color="gray">还没有返现记录哦～</p>
+        </div>
+    </ng-template>
+
+    <ng-template #listBlock>
+        <ng-container *ngFor="let items of data">
+            <ion-grid class="list-grid-default">
+                <h2>
+                    <span *ngIf="MonthNow == items.month; then nowBlock else agoBlock"></span>
+                    <ng-template #nowBlock>本月提现</ng-template>
+                    <ng-template #agoBlock>{{items.month}}提现</ng-template>
+                    <span>{{items.total/100}}元</span>
+                </h2>
+                <ion-row align-items-center p-l-10 *ngFor="let item of items.data">
+                <ion-col col-1 text-center class="has-icon"><img src="assets/imgs/card.png"></ion-col>
+                <ion-col col-11>
+                    <ul class="list-row-inner">
+                    <li class="title">
+                        {{item.time}}
+                        <p>{{item.remark}}</p>
+                    </li>
+                    <li class="note"><span ion-text color="dark">￥{{item.amount/100}}</span></li>
+                    </ul>
+                </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ng-container>
+    </ng-template>
+
+</ion-content>

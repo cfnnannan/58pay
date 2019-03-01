@@ -1,0 +1,172 @@
+<ion-header no-border>
+  <ion-toolbar no-padding>
+    <app-toolbar [Title]="HeadTitle" AppIcon="true" BtnIcon="&#xf103;" (BtnIconEvent)="App.Nav.push(App.RootPage.UsetupPage)"></app-toolbar>
+  </ion-toolbar>
+
+  <ion-toolbar no-padding>
+    <ion-grid class="grid-mine-header bgc-grad-primary no-padding">
+      <ion-row class="header-user" [navPush]="App.RootPage.UinfoPage" align-items-center>
+        <ion-col col-3>
+          <div class="header-user-img" [class.face-default]="App.IconFace" [class.face-female]="!App.IconFace"></div>
+        </ion-col>
+        <ion-col col-8>
+          <div>
+            <h5>{{App.UserInfo.nickName}}</h5>
+            <p opacity-5 f-1-4>{{ShowPhone}}</p>
+          </div>
+        </ion-col>
+        <ion-col text-left>
+          <ion-icon color="light" f-2-0>&#xf3d1;</ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ng-template [ngIf]="App.CanTrade && App.IsAndroid">
+    <ion-grid class="list-grid-default">
+      <ion-row align-items-center p-l-15 [navPush]="App.RootPage.VIPmembersPage">
+        <ion-col col-1 text-center class="has-icon">
+          <ion-icon app-icon>&#xe910;</ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ul class="list-row-inner">
+            <li class="title">VIP会员</li>
+            <li class="note">
+              <span ion-text color="orange" headings-font-weight>开通会员,享超低费率</span>
+            </li>
+            <li class="icon-arrow">
+              <ion-icon></ion-icon>
+            </li>
+          </ul>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
+
+
+  <ion-grid class="list-grid-default" m-t-10>
+    <ng-template [ngIf]="App.CanTrade || App.IsIos">
+      <ion-row align-items-center p-l-15 [navPush]="App.RootPage.RecordsPage">
+        <ion-col col-1 text-center class="has-icon">
+            <ion-icon app-icon>&#xe90a;</ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ul class="list-row-inner">
+            <li class="title">收款记录</li>
+            <li class="icon-arrow">
+              <ion-icon></ion-icon>
+            </li>
+          </ul>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+    <ion-row align-items-center p-l-15 (click)="App.IsReal(App.RootPage.MycardPage)">
+      <ion-col col-1 text-center class="has-icon">
+          <ion-icon app-icon>&#xe90f;</ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <ul class="list-row-inner">
+          <li class="title">我的银行卡</li>
+          <li class="note">
+            <span ion-text color="dark">{{App.UserInfo.creditCards}}张信用卡,{{App.UserInfo.depositCards}}张储蓄卡</span>
+          </li>
+          <li class="icon-arrow">
+            <ion-icon></ion-icon>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="list-grid-default" m-t-10>
+    <ion-row align-items-center p-l-15 [navPush]="App.RootPage.MyclientPage">
+      <ion-col col-1 text-center class="has-icon">
+          <ion-icon app-icon>&#xe90e;</ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <ul class="list-row-inner p-r-10">
+          <li class="title">我的推荐</li>
+          <li class="note">
+            <span ion-text color="dark">{{App.UserInfo.customers}}位客户</span>
+          </li>
+          <li class="icon-arrow">
+            <ion-icon></ion-icon>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ng-template [ngIf]="App.CanTrade || App.IsIos">
+      <ion-row align-items-center p-l-15 [navPush]="App.RootPage.ProfitsPage">
+        <ion-col col-1 text-center class="has-icon">
+            <ion-icon app-icon>&#xe90d;</ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ul class="list-row-inner">
+            <li class="title">我的分润</li>
+            <li class="note">
+              <span ion-text color="dark">{{App.UserInfo.profit/100}}元</span>
+            </li>
+            <li class="icon-arrow">
+              <ion-icon></ion-icon>
+            </li>
+          </ul>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  </ion-grid>
+  <ng-template [ngIf]="App.CanTrade">
+    <ion-grid class="list-grid-default" m-t-10>
+      <ion-row align-items-center p-l-15 [navPush]="App.RootPage.VoucherPage">
+        <ion-col col-1 text-center class="has-icon">
+            <ion-icon app-icon>&#xe90b;</ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ul class="list-row-inner">
+            <li class="title">红包礼券</li>
+            <li class="note">
+              <span ion-text color="dark">{{App.UserInfo.vouchers}}张</span>
+            </li>
+            <li class="icon-arrow">
+              <ion-icon></ion-icon>
+            </li>
+          </ul>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row align-items-center p-l-10 [navPush]="App.RootPage.CashbackPage">
+      <ion-col col-1 text-center class="has-icon"><img src="assets/imgs/card.png"></ion-col>
+      <ion-col col-11>
+          <ul class="list-row-inner">
+            <li class="title">返现账户</li>
+            <li class="note"><span ion-text color="dark">{{App.UserInfo.balance}}元</span></li>
+            <li class="icon-arrow"><ion-icon></ion-icon></li>
+          </ul>
+      </ion-col>
+    </ion-row> -->
+    </ion-grid>
+  </ng-template>
+
+  <ion-grid class="list-grid-default" m-t-10>
+    <!-- <ion-row align-items-center p-l-10 [navPush]="App.RootPage.InvfriendsPage"> -->
+    <ion-row align-items-center p-l-15 (click)="Invite()">
+      <ion-col col-1 text-center class="has-icon">
+          <ion-icon app-icon>&#xe90c;</ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <ul class="list-row-inner">
+          <li class="title">邀请好友</li>
+          <li class="note">
+            <span ion-text color="orange">邀请好友拿红包奖励</span>
+          </li>
+          <li class="icon-arrow">
+            <ion-icon></ion-icon>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!--    注册页面-->

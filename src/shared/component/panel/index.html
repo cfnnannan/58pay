@@ -1,0 +1,11 @@
+<ion-grid class="bgc-grad-primary">
+    <ion-row column text-center class="cmp-panel" [ngStyle]="{'opacity':Opacity}">
+        <ion-col><span class="name">{{Name}}</span></ion-col>
+        <ion-col><span class="title" [innerHTML]="Title"></span></ion-col>
+        <ion-col>
+            <ng-template [ngIf]="BtnTxt">
+                <button ion-button small outline color="light" m-b-15 (click)="BtnEvent.emit()" tappable>{{BtnTxt}}</button>
+            </ng-template>
+        </ion-col>
+    </ion-row>
+</ion-grid>

@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar no-padding>
+        <app-toolbar HasBack="true" [Title]="HeadTitle"></app-toolbar>
+    </ion-toolbar>
+    <ion-toolbar no-padding>
+        <ion-grid class="grid-row-default" no-padding>
+            <ion-row no-padding justify-content-around>
+                <ion-col col-5 text-center>可使用抵扣券({{Voucher.length}})</ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div text-center f-1-6 m-b-15 ion-text color="light-dark">
+        <p m-b-5>温馨提示：</p>
+        <span>抵扣券所抵扣的金额将存入"我的,返现账户"中</span>
+    </div>
+    <ion-grid class="grid-card-default" no-padding padding-horizontal *ngFor = "let item of Voucher; let i = index">
+        <ion-row>
+            <ion-col col-4>
+                <div class="card-value"><label><span f-2-0>￥</span><em f-5-0>{{item.amount/100}}</em><br><span>抵扣券</span></label></div>
+            </ion-col>
+            <ion-col col-8>
+                <div class="card-description">
+                    <h2>单笔收款满<span ion-text color="orange">{{item.matchAmount/100}}</span>元可用</h2>
+                    <!-- <img src="assets/imgs/guoqi.png"> -->
+                    <ul ion-text color="gray">
+                        <li>有效期至<span>{{item.expireDate}} 00:00:00</span></li>
+                        <li>
+                            <span>{{item.source}}</span>
+                            <b class="gift-tick" m-r-10 *ngIf="item.Click" (click)="Choose(i)"><ion-icon>&#xf2bc;</ion-icon></b>
+                            <b class="gift-tick no-tick" m-r-10 *ngIf="!item.Click" (click)="Choose(i)"></b>
+                        </li>
+                    </ul>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-row justify-content-center m-t-50>
+        <ion-col col-7><button class="bgc-grad-primary bgc-header" ion-button block f-1-6 (click)="Confirm()">确认</button></ion-col>
+    </ion-row>
+</ion-content>

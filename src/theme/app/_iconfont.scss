@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'appicon';
+    src: url($font-path + '/appicon.eot?am5bzh');
+    src: url($font-path + '/appicon.eot?am5bzh#iefix') format('embedded-opentype'), url($font-path + '/appicon.ttf?am5bzh') format('truetype'), url($font-path + '/appicon.woff?am5bzh') format('woff'), url($font-path +'/appicon.svg?am5bzh#appicon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+ion-icon {
+    font-family: "Ionicons";
+    &.app-icon,&[app-icon] {
+        font-family: 'appicon';
+    }
+}
+
+.icon-card:before {
+    content: "\e900";
+}
+
+.icon-card-outline:before {
+    content: "\e901";
+}
+
+.icon-home:before {
+    content: "\e902";
+}
+
+.icon-home-outline:before {
+    content: "\e903";
+}
+
+.icon-mine:before {
+    content: "\e904";
+}
+
+.icon-mine-outline:before {
+    content: "\e905";
+}
+
+.icon-pig:before {
+    content: "\e906";
+}
+
+.icon-pig-outline:before {
+    content: "\e907";
+}
+
+.icon-setup:before {
+    content: "\f103";
+}
+
+.icon-face-man:before {
+    content: "\e908";
+}
+
+.icon-face-woman:before {
+    content: "\e909";
+}
+
+.icon-record:before {
+    content: "\e90a";
+}
+
+.icon-envelopes:before {
+    content: "\e90b";
+}
+
+.icon-invitation:before {
+    content: "\e90c";
+}
+
+.icon-profit:before {
+    content: "\e90d";
+}
+
+.icon-user:before {
+    content: "\e90e";
+}
+
+.icon-card2:before {
+    content: "\e90f";
+}
+
+.icon-vip:before {
+    content: "\e910";
+}

@@ -1,0 +1,12 @@
+@function IsMargin($tag) {
+    @return if($tag=="m" or $tag=="n-m", margin, padding)
+};
+
+@function IsNeg($tag) {
+    @return if($tag=="n-m", "-", null)
+};
+
+
+@function ReTagName($name) {
+    @return if($name !="", "-#{$name}", null)
+};
